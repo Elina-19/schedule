@@ -1,14 +1,18 @@
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+.container {
+    width: auto;
+    padding-left: 0px;
+    padding-right: 0px;
 }
-
-code {
-  color: #E01A76;
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
 }
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.col {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.onAllPage{
+    padding: 0px;
+    margin: 0px;
+    max-width: none;
 }
