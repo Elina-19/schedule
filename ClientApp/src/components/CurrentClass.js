@@ -5,8 +5,6 @@ import '../custom.css';
 export class CurrentClass extends Component {
     static displayName = CurrentClass.name;
 
-
-
     constructor(props) {
         super(props);
         this.state = {

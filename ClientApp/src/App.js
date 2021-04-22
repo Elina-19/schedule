@@ -12,9 +12,12 @@ export default class App extends Component {
     static displayName = App.name;
 
     render() {
+        const date = new Date();
+
         return (
+
             <Layout>
-                <Route exact path='/' component={StatusBar}/>
+                <StatusBar date = {date} />
                 <Route exact path='/' component={CurrentClass}/>
                 <Route exact path='/' component={DailySchedule}/>
             </Layout>
