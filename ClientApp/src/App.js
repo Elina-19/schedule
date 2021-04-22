@@ -17,7 +17,7 @@ export default class App extends Component {
         return (
 
             <Layout>
-                <StatusBar date = {date} />
+                <Route exact path='/' component={StatusBar}/>
                 <Route exact path='/' component={CurrentClass}/>
                 <Route exact path='/' component={DailySchedule}/>
             </Layout>
