@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import React, {Component} from 'react';
+import {Row, Col} from 'reactstrap';
 import '../custom.css';
 
 export class DailySchedule extends Component {
@@ -11,6 +11,12 @@ export class DailySchedule extends Component {
 
             classes: [
                 {
+                    time: 'Время',
+                    nameOfDiscipline: 'Название предмета',
+                    groupNumber: 'Группа',
+                    teacherName: 'Имя преподавателя'
+                },
+                {
                     time: '8:30-10:00',
                     nameOfDiscipline: 'Англ. яз',
                     groupNumber: '11-905',
@@ -18,34 +24,47 @@ export class DailySchedule extends Component {
                 },
                 {
                     time: '10:10-11:40',
-                    nameOfDiscipline: 'Англ. яз',
-                    groupNumber: '11-905',
-                    teacherName: 'И.И Петрова'
+                    nameOfDiscipline: 'Русский язык',
+                    groupNumber: '11-505',
+                    teacherName: 'К.У Семёнов'
                 },
                 {
                     time: '11:50-13:20',
-                    nameOfDiscipline: 'Англ. яз',
-                    groupNumber: '11-905',
-                    teacherName: 'И.И Петрова'
+                    nameOfDiscipline: 'Информатика',
+                    groupNumber: '11-004',
+                    teacherName: 'А.А Иванов'
                 }
             ]
-
         };
 
     }
 
 
+    render() {
 
-    render () {
+        function CurrentPair(index) {
+            if (index + 2 === 2) {
+                return "Номер пары";
+            }
+            return index;
+        }
+
+        const content = this.state.classes.map(
+            (ourClass, index) =>
+                <Row key={index} className="brdClass">
+                    <Col className="brdColClass">{CurrentPair(index)}</Col>
+                    <Col className="brdColClass">{ourClass.time}</Col>
+                    <Col className="brdColClass">{ourClass.groupNumber}</Col>
+                    <Col className="brdColClass">{ourClass.nameOfDiscipline}</Col>
+                    <Col>{ourClass.teacherName}</Col>
+                </Row>
+        );
+
         return (
-            <Row>
-                <Col sm="1">1</Col>
-                <Col>8:30-10:00</Col>
-                <Col>Англ. яз</Col>
-                <Col>11-905</Col>
-                <Col>И.И Петрова</Col>
-            </Row>
-                //сделать динамический вывод всех элементов массива через .map
+            <div>
+                {content}
+            </div>
+            //сделать динамический вывод всех элементов массива через .map
         );
     }
 }

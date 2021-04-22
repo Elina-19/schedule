@@ -67,7 +67,7 @@ export class StatusBar extends Component {
                 </input>
                     <button  className="statusBarSearchButton">
                         Искать
-                        </button>
+                    </button>
                 </div>
             </div>
         )

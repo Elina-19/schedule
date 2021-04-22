@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import React, {Component} from 'react';
+import {Row, Col} from 'reactstrap';
 import '../custom.css';
 
 export class CurrentClass extends Component {
@@ -7,25 +7,46 @@ export class CurrentClass extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
+
             class: {
-                    time: '8:30-10:00',
-                    nameOfDiscipline: 'Англ. яз',
-                    groupNumber: '11-905',
-                    teacherName: 'И.И Петрова'
-                //добавить ещё данных, img
-                }
+                time: '8:30-10:00',
+                nameOfDiscipline: 'Английский язык',
+                groupNumber: '11-905',
+                teacherName: 'И.И Петрова',
+                classType: "Практика",
+                img: "http://www.yugopolis.ru/data/img/9fdbb17a1618e5e672ac584e99c45127/310672.jpg"
+            }
         };
-
     }
-
-    render () {
+    render() {
         return (
-            <Row>
-                <Col>Информация </Col>
-                <Col>Изображение</Col>
+            <div className="currentClass">
 
-            </Row>
+                <div className="currentClassInform">
+
+                    <p className="currentClassP">{this.state.class.groupNumber}</p>
+                    <p className="currentClassP">{this.state.class.nameOfDiscipline}</p>
+
+                    <Row >
+                        <Col min-width="200px">Статус:</Col>
+                        <Col>
+                            <p className="currentClassP">{this.state.class.time}</p>
+                            <p className="currentClassP">{this.state.class.classType}</p>
+                            <p className="currentClassP">{this.state.class.teacherName}</p>
+
+                        </Col>
+                    </Row>
+
+                </div>
+
+                <div className="imageClass">
+                    <img src={this.state.class.img} width="300px" alt="sdv"/>
+                </div>
+
+            </div>
+
         );
     }
 }

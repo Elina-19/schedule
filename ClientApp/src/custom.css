@@ -15,11 +15,29 @@
 }
 
 .onAllPage {
-    padding: 0px;
-    margin: 0px;
     max-width: none;
-}
+    padding-inline: 10%;
 
+}
+.currentClass{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+}
+.imageClass{
+    margin-left: 10%;
+}
+.currentClassInform{
+    padding-right: 20px;
+    min-width: 250px;
+}
+.currentClassP{
+    margin: 0;
+    padding: 0;
+}
 .statusBar {
     display: flex;
     flex-direction: row;
@@ -71,4 +89,13 @@
     display: inline-block;
     font-size: 16px;
 
+}
+
+.brdClass{
+    border-bottom: 1px solid black;
+    min-width: 800px;
+}
+.brdColClass{
+    border-right: 1px solid black;
+    padding-left: 3px;
 }
