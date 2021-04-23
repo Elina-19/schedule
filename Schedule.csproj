@@ -28,8 +28,6 @@
   <ItemGroup>
     <Folder Include="ClientApp\src\states" />
     <Folder Include="ClientApp\src\styles" />
-    <Folder Include="Controllers" />
-    <Folder Include="Models" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
