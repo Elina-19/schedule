@@ -10,32 +10,32 @@ namespace Schedule.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TodoItemsController : ControllerBase
+    public class ClassItemsController : ControllerBase
     {
         private readonly TodoContext _context;
 
-        // GET: api/TodoItems
+        // GET: api/ClassItems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ClassItem>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<ClassItem>>> GetClassItems()
         {
             return await _context.ClassItems.ToListAsync();
         }
 
-        // GET: api/TodoItems/5
+        // GET: api/ClassItems/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ClassItem>> GetTodoItem(long id)
+        public async Task<ActionResult<ClassItem>> GetClassItem(long id)
         {
-            var todoItem = await _context.ClassItems.FindAsync(id);
+            var classItem = await _context.ClassItems.FindAsync(id);
 
-            if (todoItem == null)
+            if (classItem == null)
             {
                 return NotFound();
             }
 
-            return todoItem;
+            return classItem;
         }
 
-        private bool TodoItemExists(long id)
+        private bool ClassItemExists(long id)
         {
             return _context.ClassItems.Any(e => e.Id == id);
         }
