@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap';
-import '../custom.css';
+import './CurrentClass.css';
 
 export class CurrentClass extends Component {
     static displayName = CurrentClass.name;

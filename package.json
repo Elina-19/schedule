@@ -1,7 +1,6 @@
 {
   "name": "schedule",
   "version": "1.0.0",
-  "dependencies": {},
   "devDependencies": {
     "react-moment": "^1.1.1"
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import '../custom.css';
+import './Layout.css';
 
 export class Layout extends Component {
   static displayName = Layout.name;

@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
-import './StatusBar.css';
+import '../custom.css';
 
-export class StatusBar extends Component {
+export class FloorStatusBar extends Component {
+    
+    //вроде не нужен так как импортируем из папки components
 
     constructor(props) {
 
         super(props);
 
         var today = new Date(),
-            time =  today.toLocaleTimeString(),
+            time = today.toLocaleTimeString(),
             day = today.getDay();
 
         this.state = {
@@ -25,7 +27,7 @@ export class StatusBar extends Component {
                 this.tick(), 1000);
     }
 
-    componentWillUnmount() {
+    componentWillMount() {
         clearInterval(this.intervalID);
     }
 
@@ -60,17 +62,17 @@ export class StatusBar extends Component {
 
     render() {
         return (
-            <div className="statusBar">
-                <div className="statusBarCurrentTime"  > {this.state.time} </div>
-                <div className="statusBarCurrentDay">{this.currentDay()}</div>
-                <div  className="statusBarSearchAndInput"> <input className="statusBarInput" >
-                </input>
-                    <button  className="statusBarSearchButton">
+            <div className = "floorStatusBar">
+                <div className="floorStatusBarCurrentTime"> {this.state.time} </div>
+                <div className="floorStatusBarCurrentDay">{this.currentDay()}</div>
+                <div className="floorStatusBarSearchAndInput">
+                    <input className="floorStatusBarInput"></input>
+                    <button className="floorStatusBarSearchButton">
                         Искать
                     </button>
                 </div>
             </div>
         )
-
     }
+
 }
