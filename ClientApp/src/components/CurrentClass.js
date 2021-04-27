@@ -16,7 +16,8 @@ export class CurrentClass extends Component {
                 groupNumber: '11-905',
                 teacherName: 'И.И Петрова',
                 classType: "Практика",
-                img: "http://www.yugopolis.ru/data/img/9fdbb17a1618e5e672ac584e99c45127/310672.jpg"
+                img: "http://www.yugopolis.ru/data/img/9fdbb17a1618e5e672ac584e99c45127/310672.jpg",
+                idClass:1310
             }
         };
     }
@@ -35,6 +36,7 @@ export class CurrentClass extends Component {
                             <p className="currentClassP">{this.state.class.time}</p>
                             <p className="currentClassP">{this.state.class.classType}</p>
                             <p className="currentClassP">{this.state.class.teacherName}</p>
+                            <p className="currentClassP">{this.state.class.idClass}</p>
 
                         </Col>
                     </Row>

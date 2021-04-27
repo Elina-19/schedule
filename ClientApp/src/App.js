@@ -18,10 +18,10 @@ export default class App extends Component {
         return (
 
             <Layout className="allPage">
-                <Route exact path='/' component={StatusBar}/>
-                <Route exact path='/' component={CurrentClass}/>
-                <Route exact path='/' component={StatusDailySchedule}/>
-                <Route exact path='/' component={DailySchedule}/>
+          <CurrentClass/>
+              <StatusBar/>
+                <StatusDailySchedule/>
+       <DailySchedule/>
             </Layout>
                 );
     }

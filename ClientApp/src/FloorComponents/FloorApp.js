@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router';
-import {Layout} from './components/Layout';
-import {CurrentClass} from './components/CurrentClass';
-import {StatusBar} from './сomponents/StatusBar';
-import {DailySchedule} from './components/DailySchedule';
+import {Layout} from '../components/Layout';
+import{ CurrentClass} from '../components/CurrentClass';
+import {StatusBar} from '../components/StatusBar';
+import {DailySchedule} from '../components/DailySchedule';
+import {FloorStatusBar} from './FloorStatusBar';
+import Router from '../Router';
+import App from '../App';
 
-import './custom.css'
+import '../custom.css'
 
 export default class FloorApp extends Component {
 
@@ -18,9 +21,9 @@ export default class FloorApp extends Component {
         return (
 
             <Layout className="allPage">
-                <Route exact path='/' component={StatusBar}/>
-                <Route exact path='/' component={CurrentClass}/>
-                <Route exact path='/' component={DailySchedule}/>
+                <FloorStatusBar/>
+                <StatusBar/>
+                <DailySchedule/>
             </Layout>
         );
     }
