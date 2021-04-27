@@ -1,25 +1,27 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router';
 import {Layout} from './components/Layout';
-import {StatusBar} from './components/StatusBar';
-import {FloorSchedule} from './FloorComponents/FloorSchedule';
+import {CurrentClass} from './components/CurrentClass';
+import {StatusBar} from './сomponents/StatusBar';
+import {DailySchedule} from './components/DailySchedule';
 import {StatusDailySchedule} from './components/StatusDailySchedule';
 
-import './custom.css'
+import './custom.css'//возможно каждый отдельно надо импортировать
 
 export default class FloorApp extends Component {
 
-    static displayName = FloorApp.name;
+    static displayName = App.name;
 
     render() {
         const date = new Date();
 
         return (
 
-            <Layout classname="allPage">
+            <Layout className="allPage">
                 <Route exact path='/' component={StatusBar}/>
+                <Route exact path='/' component={CurrentClass}/>
                 <Route exact path='/' component={StatusDailySchedule}/>
-                <Route exact path='/' component={FloorSchedule}/>
+                <Route exact path='/' component={DailySchedule}/>
             </Layout>
         );
     }
