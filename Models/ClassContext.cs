@@ -1,12 +1,12 @@
 ﻿namespace Schedule.Models
 {
-    public class TodoContext : DbContext
+    public class ClassContext : DbContext
     {
-        public TodoContext(DbContextOptions<ClassContext> options)
+        public ClassContext(DbContextOptions<ClassContext> options)
             : base(options)
         {
         }
 
-        public DbSet<ClassItem> ClassItems { get; set; }
+        public DbSet<Class> Classes { get; set; }
     }
 }
