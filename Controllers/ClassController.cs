@@ -29,7 +29,7 @@ namespace Schedule.Controllers
         }
 
 
-        // GET: api/class/{id}
+        // GET: api/classes/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<Classes>> GetClass(long id)
         {
