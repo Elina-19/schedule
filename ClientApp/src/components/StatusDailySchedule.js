@@ -5,6 +5,8 @@ export class StatusDailySchedule extends Component {
     constructor(props) {
         super(props);
 
+        // У вас вызов времени часто применяется
+        // и вырисовывается некий паттерн, который можно вынести в какой то класс, в котором будут прописаны методы, которые нужны и не надо будет создавать в каждом компоненете объект
         var today = new Date(),
             day = today.getDay(),
             month = today.getMonth();
@@ -14,7 +16,9 @@ export class StatusDailySchedule extends Component {
             month: month
         };
     }
-
+    
+    // Конечно можно через свич кейсы, но проще можно было бы сделать массив, в котором будут эти значения и по номеру индекса их получать
+    // слегка замудренно получается
     currentDay() {
         switch (this.state.day) {
             case (1):
