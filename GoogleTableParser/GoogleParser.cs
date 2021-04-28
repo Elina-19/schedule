@@ -77,15 +77,12 @@ namespace GoogleParser
                         else
                         {
                             list[j, i] = item[i];
-                            Console.Write(list[j, i] + "|");
                         }
                     }
                     for (int k = item.Count; k < 50; k++)
                     {
                         list[j, k] = "------";
-                        Console.Write(list[j, k] + "|");
                     }
-                    Console.WriteLine();
                     j++;
                 }
                 return list;
