@@ -13,14 +13,25 @@ namespace Schedule.Controllers
     public class ClassController : ControllerBase
     {
         private readonly ClassContext _context;
-
+        
+        /*
+         * Видимо мою мысль не поняли
+         * Этот контроллер должен отвечать только за получения конкретной аудитории, т.е.
+         * api/class/{id}
+         * В данном случае, этаж тут никакой роли не играет.
+         *
+         * Для этажа надо создать отдельный контроллер
+         * в котором будут запросы по типу, api/floor/{id}
+         * И в ответ на этот запрос, должен возвращаться массив объектов, в котором описаны аудитории
+         */
+        
         // GET: api/classes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Class>>> GetClasses()
         {
             return await _context.Classes.ToListAsync();
         }
-
+        
         // GET: api/classes/{floorId}
         [HttpGet("{floorId}")]
         public async Task<ActionResult<IEnumerable<Class>>> GetClassesByFloor(int floorId)
@@ -32,7 +43,6 @@ namespace Schedule.Controllers
             }
             return classesByFloor;
         }
-
 
         // GET: api/classes/{floorId}/{id}
         [HttpGet("{floorId}/{id}")]

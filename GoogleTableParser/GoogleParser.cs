@@ -8,6 +8,7 @@ namespace GoogleParser
 {
     class Program
     {
+        // стоит сразу же выработать какой нибудь общий код стайл, которого вы все в команде будете придерживаться
         static readonly string[] Scopes = { SheetsService.Scope.Spreadsheets };
 
         static readonly string AppName = "TableParserForProject";
@@ -18,6 +19,14 @@ namespace GoogleParser
 
         static SheetsService service;
 
+        // Убрать здесь main метод
+        // В проекте не может быть два main метода.
+        // И выглядит так, как будто вы пытались создать проект, но его создать не получилось и создали просто папку
+        
+        // Во вторых добавьте в gitignore table_parser.json, потому что у вас там все credentials, что конечно же неправильно
+        // потому что дай волю, я могу их взять и просто задудосить и тогда гугл начнется ругаться, что за фигня, и заблочит ваше приложение
+        
+        // И почитайте про асинхронные запросы. У вас сейчас все синхронно выполняется
         static void Main(string[] args)
         {
             
