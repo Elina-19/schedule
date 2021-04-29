@@ -53,7 +53,7 @@ namespace GoogleParser
         {
             for (int i = 0; i < 43; i++)
             {
-                for (int j = 0; j < 50; j++)
+                for (int j = 0; j < 49; j++)
                 {
                     Console.Write(array[i, j] + "|");
                     //
@@ -69,24 +69,24 @@ namespace GoogleParser
 
             var response = request.Execute();
             var values = response.Values;
-            var list = new object[43, 50];
+            var list = new object[43, 49];
             var j = 0;
             if (values != null && values.Count > 0)
             {
                 foreach (var item in values)
                 {
-                    for (int i = 0; i < item.Count; i++)
+                    for (int i = 1; i < item.Count; i++)
                     {
                         if (item[i] =="")
                         {
-                            list[j, i] = "------";
+                            list[j, i-1] = "------";
                         }
                         else
                         {
-                            list[j, i] = item[i];
+                            list[j, i-1] = item[i];
                         }
                     }
-                    for (int k = item.Count; k < 50; k++)
+                    for (int k = item.Count-1; k < 49; k++)
                     {
                         list[j, k] = "------";
                     }
@@ -99,5 +99,4 @@ namespace GoogleParser
                 throw new Exception("NO DATA");
         }
     }
-    
 }
