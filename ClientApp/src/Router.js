@@ -11,8 +11,8 @@ const Router =(props)=>{
         <BrowserRouter>
             <Switch>
                 // Лучше не currentclass и currentfloor, а просто class и floor
-                <Route  path="/currentclass/:classId" component={App}/>
-                <Route path="/currentfloor/:floorId" component={FloorApp}/>
+                <Route  path="/class/:classId" component={App}/>
+                <Route path="/floor/:floorId" component={FloorApp}/>
                 // https://reactrouter.com/web/example/no-match переделать, как тут описано
                 <Route component={NotFoundPage}/>
             </Switch>
