@@ -31,26 +31,14 @@ namespace Schedule.Controllers
         {
             return await _context.Classes.ToListAsync();
         }
-        
-        // GET: api/classes/{floorId}
-        [HttpGet("{floorId}")]
-        public async Task<ActionResult<IEnumerable<Class>>> GetClassesByFloor(int floorId)
-        {
-            List<Class> classesByFloor = await _context.Classes.Where(x => (x.FloorId == floorId)).ToListAsync();
-            if (classesByFloor.Count == 0)
-            {
-                return NotFound();
-            }
-            return classesByFloor;
-        }
 
-        // GET: api/classes/{floorId}/{id}
-        [HttpGet("{floorId}/{id}")]
-        public async Task<ActionResult<Class>> GetClass(int floorId, long id)
+        // GET: api/classes/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Class>> GetClass(long id)
         {
             var certainClass = await _context.Classes.FindAsync(id);
 
-            if (certainClass == null || certainClass.FloorId != floorId)
+            if (certainClass == null)
             {
                 return NotFound();
             }
