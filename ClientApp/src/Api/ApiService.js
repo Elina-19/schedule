@@ -28,16 +28,20 @@ export default class ApiService {
             time: planet.diameter,
             nameOfDiscipline: planet.name,
             groupNumber: planet.orbital_period,
-            teacherName: planet.edited ,
-            classType: planet.gravity ,
+            teacherName: planet.edited,
+            classType: planet.gravity,
             img: id,
             idClass: planet.edited
         };
     }
 
     _extractClass(href) {
-        const idRegExp = /\/([0-9]*)\/$/;
-        return href.match(idRegExp)[1];
-    }
+        try {
+            const idRegExp = /\/([0-9]*)\/$/;
+            return href.match(idRegExp)[1];
+        } catch (error) {
+            return 2;
+        }
 
+    }
 }
