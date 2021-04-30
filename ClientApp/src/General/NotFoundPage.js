@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter,Route,Switch,Link}  from 'react-router-dom';
-import FloorApp from '../FloorComponents/FloorApp';
-import App from '../App';
+import Floor from '../FloorComponents/Floor';
+import Class from '../ClassComponents/Class';
 const NotFoundPage = () =>
 {
     return(
@@ -25,8 +25,8 @@ const NotFoundPage = () =>
                     </div>
                 <BrowserRouter>
                 <Switch>
-                    <Route path="/class/:classId" component={App}/>
-                    <Route path="/floor/:floorId" component ={FloorApp}/>
+                    <Route path="/class/:classId" component={Class}/>
+                    <Route path="/floor/:floorId" component ={Floor}/>
                 </Switch>
                 </BrowserRouter>
             </div>

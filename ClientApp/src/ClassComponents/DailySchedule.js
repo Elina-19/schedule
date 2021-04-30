@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap';
-import './DailySchedule.css';
+import './css/DailySchedule.css';
 
 export class DailySchedule extends Component {
     static displayName = DailySchedule.name;
@@ -48,7 +48,7 @@ export class DailySchedule extends Component {
 
 
         function CurrentPair(index) {
-            if (index + 2 === 2) {
+            if (index === 0) {
                 return "Номер пары";
             }
             return index;

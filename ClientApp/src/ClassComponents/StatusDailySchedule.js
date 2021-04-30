@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './StatusDailySchedule.css';
+import './css/StatusDailySchedule.css';
 
 export class StatusDailySchedule extends Component {
     constructor(props) {
