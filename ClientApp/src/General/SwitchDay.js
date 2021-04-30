@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
 import './SwitchDay.css';
+import CurrentDate from '../General/CurrentDate'
 
 export class SwitchDay extends Component {
+
+    currentDate = new CurrentDate();
+
     constructor(props) {
         super(props);
 
-        // У вас вызов времени часто применяется
-        // и вырисовывается некий паттерн, который можно вынести в какой то класс, в котором будут прописаны методы, которые нужны и не надо будет создавать в каждом компоненете объект
-        var today = new Date(),
-            day = today.getDay(),
-            month = today.getMonth();
-
         this.state = {
-            day: day,
-            month: month,
             week: [
                 'понедельник',
                 'вторник',
@@ -39,8 +35,10 @@ export class SwitchDay extends Component {
             ]
         };
     }
-    
+
     render() {
+        const { week, months } = this.state;
+
         return (
             <div>
                 <div className="dailyScheduleMain">
@@ -48,7 +46,7 @@ export class SwitchDay extends Component {
                         <button className="dailyScheduleButton">←</button>
                     </div>
                     <div><p
-                        className="dailyScheduleP">{this.state.day} {this.state.months[this.state.month]}, {this.state.week[this.state.day]}</p>
+                        className="dailyScheduleP">{this.currentDate.currentDayOfWeek()} {months[this.currentDate.currentMonth()]}, {week[this.currentDate.currentDayOfWeek()]}</p>
                     </div>
                     <div>
                         <button className="dailyScheduleButton">→</button>

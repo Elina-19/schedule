@@ -12,10 +12,8 @@ export class StatusBar extends Component {
             day = today.getDay();
 
         this.state = {
-
             time: time,
             day: day
-
         };
     }
 
