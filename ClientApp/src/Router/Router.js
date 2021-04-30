@@ -8,7 +8,7 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/class/:classId" component={Audience}/>
+                <Route path="/audience/:audienceId" component={Audience}/>
                 <Route path="/floor/:floorId" component={Floor}/>
                 // https://reactrouter.com/web/example/no-match переделать, как тут описано
                 <Route component={NotFoundPage}/>

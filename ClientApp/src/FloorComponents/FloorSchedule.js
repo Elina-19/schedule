@@ -9,10 +9,10 @@ export class FloorSchedule extends Component {
         super(props);
 
         this.state = {
-            classes: [
+            audiences: [
                 {
-                    numberOfCLass: '№ аудитории',
-                    listOfPairs: [
+                    numberOfAudience: '№ аудитории',
+                    listOfClasses: [
                         {
                             nameOfDiscipline: 'Название предмета',
                             teacherName: 'Имя преподавателя',
@@ -22,8 +22,8 @@ export class FloorSchedule extends Component {
                     ]
                 },
                 {
-                    numberOfAudi: '1301',
-                    listOfPairs: [
+                    numberOfAudience: '1301',
+                    listOfClasses: [
                         {
                             nameOfDiscipline: 'Алгем',
                             teacherName: 'Арсланов',
@@ -37,6 +37,40 @@ export class FloorSchedule extends Component {
                             time: '10:10-11:40',
                         },
                     ]
+                },
+                {
+                    numberOfAudience: '1302',
+                    listOfClasses: [
+                        {
+                            nameOfDiscipline: 'Алгем',
+                            teacherName: 'Тапкин',
+                            groupNumber: '11-001',
+                            time: '8:30-10:00',
+                        },
+                        {
+                            nameOfDiscipline: 'Информатика',
+                            teacherName: 'Ференец',
+                            groupNumber: '11-906',
+                            time: '10:10-11:40',
+                        }
+                    ]
+                },
+                {
+                    numberOfAudience: '1303',
+                    listOfClasses: [
+                        {
+                            nameOfDiscipline: 'Русский язык',
+                            teacherName: 'Гараева',
+                            groupNumber: '11-003',
+                            time: '8:30-10:00',
+                        },
+                        {
+                            nameOfDiscipline: 'Дискретная математика',
+                            teacherName: 'Зубков',
+                            groupNumber: '11-002',
+                            time: '10:10-11:40',
+                        }
+                    ]
                 }
             ]
         };
@@ -45,12 +79,12 @@ export class FloorSchedule extends Component {
 
     render() {
 
-        const content = this.state.audis.map(
+        const content = this.state.audiences.map(
             (ourClass, index) =>
                 <Row key={index} className="brdClass">
-                    <Col className="brdColClass">{ourClass.numberOfAudi}</Col>
+                    <Col className="brdColClass">{ourClass.numberOfAudience}</Col>
                     <Col className="brdColClass">
-                        {ourClass.listOfPairs.map(
+                        {ourClass.listOfClasses.map(
                             (ourClass) =>
                                 <Row className="brdClass">
                                     <Col className="brdColClass">{ourClass.nameOfDiscipline}</Col>
