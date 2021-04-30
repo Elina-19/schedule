@@ -26,6 +26,7 @@ export default class ApiService {
 
     _transformClass(planet, id) {
         return {
+            numberOfClass: planet.gravity,
             time: planet.diameter,
             nameOfDiscipline: planet.name,
             groupNumber: planet.orbital_period,

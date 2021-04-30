@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Layout} from '../General/Layout';
 import {StatusBar} from '../General/StatusBar';
-import {DailySchedule} from '../ClassComponents/DailySchedule';
+import {FloorSchedule} from './FloorSchedule';
 import {SwitchDay} from '../General/SwitchDay'
 import '../custom.css'
 
@@ -16,7 +16,7 @@ export default class Floor extends Component {
             <Layout className="allPage">
                 <StatusBar/>
                 <SwitchDay/>
-                <DailySchedule/>
+                <FloorSchedule/>
             </Layout>
         );
     }
