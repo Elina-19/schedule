@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import './css/StatusDailySchedule.css';
+import './SwitchDay.css';
 
-export class StatusDailySchedule extends Component {
+export class SwitchDay extends Component {
     constructor(props) {
         super(props);
 

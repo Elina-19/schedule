@@ -3,7 +3,7 @@ import {Layout} from '../General/Layout';
 import {CurrentClass} from './CurrentClass';
 import {StatusBar} from '../General/StatusBar';
 import {DailySchedule} from './DailySchedule';
-import {StatusDailySchedule} from './StatusDailySchedule';
+import {SwitchDay} from '../General/SwitchDay';
 import '../custom.css'
 
 export default class Class extends Component {
@@ -16,7 +16,7 @@ export default class Class extends Component {
             <Layout className="allPage">
                 <StatusBar/>
                 <CurrentClass/>
-                <StatusDailySchedule/>
+                <SwitchDay/>
                 <DailySchedule/>
             </Layout>
         );
