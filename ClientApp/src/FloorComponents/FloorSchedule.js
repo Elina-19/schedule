@@ -9,9 +9,9 @@ export class FloorSchedule extends Component {
         super(props);
 
         this.state = {
-            audis: [
+            classes: [
                 {
-                    numberOfAudi: '№ аудитории',
+                    numberOfCLass: '№ аудитории',
                     listOfPairs: [
                         {
                             nameOfDiscipline: 'Название предмета',
@@ -36,40 +36,6 @@ export class FloorSchedule extends Component {
                             groupNumber: '11-004',
                             time: '10:10-11:40',
                         },
-                    ]
-                },
-                {
-                    numberOfAudi: '1302',
-                    listOfPairs: [
-                        {
-                            nameOfDiscipline: 'Алгем',
-                            teacherName: 'Тапкин',
-                            groupNumber: '11-001',
-                            time: '8:30-10:00',
-                        },
-                        {
-                            nameOfDiscipline: 'Информатика',
-                            teacherName: 'Ференец',
-                            groupNumber: '11-906',
-                            time: '10:10-11:40',
-                        }
-                    ]
-                },
-                {
-                    numberOfAudi: '1303',
-                    listOfPairs: [
-                        {
-                            nameOfDiscipline: 'Русский язык',
-                            teacherName: 'Гараева',
-                            groupNumber: '11-003',
-                            time: '8:30-10:00',
-                        },
-                        {
-                            nameOfDiscipline: 'Дискретная математика',
-                            teacherName: 'Зубков',
-                            groupNumber: '11-002',
-                            time: '10:10-11:40',
-                        }
                     ]
                 }
             ]
