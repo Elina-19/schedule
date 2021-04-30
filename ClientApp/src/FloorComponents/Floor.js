@@ -11,8 +11,6 @@ export default class Floor extends Component {
     //TODO сделать еще отдельные css для классов в FloorComponents и таблицу как вторую компоненту
 
     render() {
-        const date = new Date();
-
         return (
 
             <Layout className="allPage">

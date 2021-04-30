@@ -13,65 +13,33 @@ export class StatusDailySchedule extends Component {
 
         this.state = {
             day: day,
-            month: month
+            month: month,
+            week: [
+                'понедельник',
+                'вторник',
+                'среда',
+                'четверг',
+                'пятница',
+                'суббота',
+                'воскресенье'
+            ],
+            months: [
+                'января',
+                'февраля',
+                'марта',
+                'апреля',
+                'мая',
+                'июня',
+                'июля',
+                'августа',
+                'сентября',
+                'октября',
+                'ноября',
+                'декабря'
+            ]
         };
     }
     
-    // Конечно можно через свич кейсы, но проще можно было бы сделать массив, в котором будут эти значения и по номеру индекса их получать
-    // слегка замудренно получается
-    currentDay() {
-        switch (this.state.day) {
-            case (1):
-                return 'понедельник';
-            case (2):
-                return 'вторник';
-            case (3):
-                return 'среда';
-            case (4):
-                return 'четверг';
-            case (5):
-                return ('пятница');
-            case (6):
-                return ('суббота');
-            case (7):
-                return ('воскресенье');
-            default:
-                return ('');
-        }
-    }
-
-    currentMonth() {
-        switch (this.state.month) {
-            case (0):
-                return 'января';
-            case (1):
-                return 'февраля';
-            case (2):
-                return 'марта';
-            case (3):
-                return 'апреля';
-            case (4):
-                return ('мая');
-            case (5):
-                return ('июня');
-            case (6):
-                return ('июля');
-            case (7):
-                return ('августа');
-            case (8):
-                return ('сентября');
-            case (9):
-                return ('октября');
-            case (10):
-                return ('ноября');
-            case (11):
-                return ('декабря');
-
-            default:
-                return ('');
-        }
-    }
-
     render() {
         return (
             <div>
@@ -79,7 +47,8 @@ export class StatusDailySchedule extends Component {
                     <div>
                         <button className="dailyScheduleButton">←</button>
                     </div>
-                    <div><p className="dailyScheduleP">{this.state.day} {this.currentMonth()}, {this.currentDay()}</p>
+                    <div><p
+                        className="dailyScheduleP">{this.state.day} {this.state.months[this.state.month]}, {this.state.week[this.state.day]}</p>
                     </div>
                     <div>
                         <button className="dailyScheduleButton">→</button>
