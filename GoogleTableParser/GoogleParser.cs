@@ -3,25 +3,13 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Sheets.v4;
 using System.IO;
 using System.Collections.Generic;
-using Google.Apis;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace GoogleParser
 {
     public class GoogleTableParser
     {
-        // стоит сразу же выработать какой нибудь общий код стайл, которого вы все в команде будете придерживаться
-
-
-        // Убрать здесь main метод
-        // В проекте не может быть два main метода.
-        // И выглядит так, как будто вы пытались создать проект, но его создать не получилось и создали просто папку
-
-        // Во вторых добавьте в gitignore table_parser.json, потому что у вас там все credentials, что конечно же неправильно
-        // потому что дай волю, я могу их взять и просто задудосить и тогда гугл начнется ругаться, что за фигня, и заблочит ваше приложение
-
-        // И почитайте про асинхронные запросы. У вас сейчас все синхронно выполняется
-
-
         static readonly string[] Scopes = { SheetsService.Scope.Spreadsheets };
 
         static readonly string AppName = "TableParserForProject";
@@ -46,17 +34,62 @@ namespace GoogleParser
                 ApplicationName = AppName,
             });
             var arr = ReadEntries();
-            TableWriter(arr);
+
+            //Работа с json файлом
+            WriteTojson(arr);
+
+            //TableWriter(arr);
+        }
+
+        private static void WriteTojson(object[,] arr)
+        {
+            var dayNumber = 0;
+            var subjects = new List<Subject>();
+
+            //создание списака групп
+            var groupsNumber = new List<string>();
+            for (int i = 0; i < arr.GetLength(1); i++)
+            {
+                groupsNumber.Add(arr[0, i].ToString());
+            }
+
+            //обработка массива данных с GoogleTable
+            for (int i = 1; i < arr.GetLength(0); i++)
+            {
+                if (i % 7 == 0) dayNumber = i / 7;
+
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    if (subjects.Count != 0 && subjects[subjects.Count - 1].AllInf == arr[i, j].ToString())
+                    {
+                        subjects[subjects.Count - 1].Groups = groupsNumber[j];
+                    }
+                    else
+                    {
+                        subjects.Add(new Subject(dayNumber, arr[i, j].ToString(), groupsNumber[j]));
+                    }
+                }
+            }
+
+            //Забись в json
+            using (FileStream fs = new FileStream("schedule.json", FileMode.OpenOrCreate))
+            {
+                foreach (var item in subjects)
+                {
+                    JsonSerializer.SerializeAsync<Subject>(fs, item);
+                }
+                Console.WriteLine("Data has been saved to file");
+            }
+
         }
 
         private static void TableWriter(object[,] array)
         {
             for (int i = 0; i < 43; i++)
             {
-                for (int j = 0; j < 49; j++)
+                for (int j = 0; j < 50; j++)
                 {
                     Console.Write(array[i, j] + "|");
-                    //
                 }
                 Console.WriteLine();
             }
@@ -69,24 +102,24 @@ namespace GoogleParser
 
             var response = request.Execute();
             var values = response.Values;
-            var list = new object[43, 49];
+            var list = new object[43, 50];
             var j = 0;
             if (values != null && values.Count > 0)
             {
                 foreach (var item in values)
                 {
-                    for (int i = 1; i < item.Count; i++)
+                    for (int i = 0; i < item.Count; i++)
                     {
-                        if (item[i] =="")
+                        if (item[i] == "")
                         {
-                            list[j, i-1] = "------";
+                            list[j, i] = "------";
                         }
                         else
                         {
-                            list[j, i-1] = item[i];
+                            list[j, i] = item[i];
                         }
                     }
-                    for (int k = item.Count-1; k < 49; k++)
+                    for (int k = item.Count; k < 50; k++)
                     {
                         list[j, k] = "------";
                     }
@@ -99,4 +132,6 @@ namespace GoogleParser
                 throw new Exception("NO DATA");
         }
     }
+
 }
+
