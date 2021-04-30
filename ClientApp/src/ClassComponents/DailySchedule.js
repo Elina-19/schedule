@@ -1,63 +1,43 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap';
 import './css/DailySchedule.css';
+import ApiService from '../Api/ApiService';
+
 
 export class DailySchedule extends Component {
     static displayName = DailySchedule.name;
 
-    constructor(props) {
-        super(props);
+    state = {
+        classes: []
+    };
 
+    apiService = new ApiService();
 
-        var today = new Date(),
-            time =  today.toLocaleTimeString();
-
-        this.state = {
-            time: time,
-            classes: [
-                {
-                    time: 'Время',
-                    nameOfDiscipline: 'Название предмета',
-                    groupNumber: 'Группа',
-                    teacherName: 'Имя преподавателя'
-                },
-                {
-                    time: '8:30-10:00',
-                    nameOfDiscipline: 'Англ. яз',
-                    groupNumber: '11-905',
-                    teacherName: 'И.И Петрова'
-                },
-                {
-                    time: '10:10-11:40',
-                    nameOfDiscipline: 'Русский язык',
-                    groupNumber: '11-505',
-                    teacherName: 'К.У Семёнов'
-                },
-                {
-                    time: '11:50-13:20',
-                    nameOfDiscipline: 'Информатика',
-                    groupNumber: '11-004',
-                    teacherName: 'А.А Иванов'
-                }
-            ]
-        };
-
+    constructor() {
+        super();
+        this.updateClass();
     }
+
+    onClassLoaded = (classes) => {
+        this.setState({classes});
+        console.log(this.state);
+    };
+
+    updateClass() {
+        this.apiService
+            .getAllClasses()
+            .then(this.onClassLoaded);
+    }
+
 
     render() {
 
 
-        function CurrentPair(index) {
-            if (index === 0) {
-                return "Номер пары";
-            }
-            return index;
-        }
-
         const content = this.state.classes.map(
             (ourClass, index) =>
                 <Row key={index} className="brdClass">
-                    <Col className="brdColClass">{CurrentPair(index)}</Col>
+                    <Col className="brdColClass">{index+1}</Col>
+
                     <Col className="brdColClass">{ourClass.time}</Col>
                     <Col className="brdColClass">{ourClass.groupNumber}</Col>
                     <Col className="brdColClass">{ourClass.nameOfDiscipline}</Col>
@@ -67,9 +47,16 @@ export class DailySchedule extends Component {
 
         return (
             <div>
+                <Row  className="brdClass">
+                    <Col className="brdColClass">Номер пары</Col>
+
+                    <Col className="brdColClass">Время</Col>
+                    <Col className="brdColClass">Группа</Col>
+                    <Col className="brdColClass">Название предмета</Col>
+                    <Col>Имя преподавателя</Col>
+                </Row>
                 {content}
             </div>
-            //сделать динамический вывод всех элементов массива через .map
         );
     }
 }

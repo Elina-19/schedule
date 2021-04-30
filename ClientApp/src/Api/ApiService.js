@@ -15,6 +15,7 @@ export default class ApiService {
 
     async getAllClasses() {
         const res = await this.getResource(`/planets/`);
+        
         return res.results.map(this._transformClass);
     }
 
