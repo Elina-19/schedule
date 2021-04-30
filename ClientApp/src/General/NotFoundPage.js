@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter,Route,Switch,Link}  from 'react-router-dom';
 import Floor from '../FloorComponents/Floor';
-import Audience from '../ClassComponents/Audience';
+import Audience from '../AudienceComponents/Audience';
 const NotFoundPage = () =>
 {
     return(

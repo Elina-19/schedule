@@ -1,5 +1,5 @@
 import React from 'react';
-import Audience from '../ClassComponents/Audience';
+import Audience from '../AudienceComponents/Audience';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import NotFoundPage from '../General/NotFoundPage'
 import Floor from '../FloorComponents/Floor'

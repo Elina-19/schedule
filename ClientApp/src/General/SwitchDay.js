@@ -46,7 +46,7 @@ export class SwitchDay extends Component {
                         <button className="dailyScheduleButton">←</button>
                     </div>
                     <div><p
-                        className="dailyScheduleP">{this.currentDate.currentDayOfWeek()} {months[this.currentDate.currentMonth()]}, {week[this.currentDate.currentDayOfWeek()]}</p>
+                        className="dailyScheduleP">{this.currentDate.currentDay()} {months[this.currentDate.currentMonth()]}, {week[this.currentDate.currentDayOfWeek()]}</p>
                     </div>
                     <div>
                         <button className="dailyScheduleButton">→</button>
