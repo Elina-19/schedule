@@ -1,42 +1,63 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap';
 import './css/CurrentClass.css';
+import ApiService from '../Api/ApiService';
 
 export class CurrentClass extends Component {
+
     static displayName = CurrentClass.name;
 
-    constructor(props) {
-        super(props);
+    apiService = new ApiService();
 
-        this.state = {
+    state = {
+        currentClass: {}
+    };
 
-            class: {
-                time: '8:30-10:00',
-                nameOfDiscipline: 'Английский язык',
-                groupNumber: '11-905',
-                teacherName: 'И.И Петрова',
-                classType: "Практика",
-                img: "http://www.yugopolis.ru/data/img/9fdbb17a1618e5e672ac584e99c45127/310672.jpg",
-                idClass:1310
-            }
-        };
+    constructor() {
+        super();
+        this.updateClass("");
     }
+
+    onClassLoaded = (currentClass) => {
+        this.setState({currentClass});
+    };
+
+    updateClass(index) {
+        const id = this.apiService._extractClass(window.location.href) + index ;
+        this.apiService
+            .getClass(id)
+            .then(this.onClassLoaded);
+    }
+
     render() {
+
+        const {
+            currentClass: {
+                time,
+                nameOfDiscipline,
+                groupNumber,
+                teacherName,
+                classType,
+                img,
+                idClass
+            }
+        } = this.state;
+
+
         return (
             <div className="currentClass">
-
                 <div className="currentClassInform">
 
-                    <p className="currentClassP">{this.state.class.groupNumber}</p>
-                    <p className="currentClassP">{this.state.class.nameOfDiscipline}</p>
+                    <p className="currentClassP">{groupNumber}</p>
+                    <p className="currentClassP">{nameOfDiscipline}</p>
 
-                    <Row >
+                    <Row>
                         <Col min-width="200px">Статус:</Col>
                         <Col>
-                            <p className="currentClassP">{this.state.class.time}</p>
-                            <p className="currentClassP">{this.state.class.classType}</p>
-                            <p className="currentClassP">{this.state.class.teacherName}</p>
-                            <p className="currentClassP">{this.state.class.idClass}</p>
+                            <p className="currentClassP">{time}</p>
+                            <p className="currentClassP">{classType}</p>
+                            <p className="currentClassP">{teacherName}</p>
+                            <p className="currentClassP">{idClass}</p>
 
                         </Col>
                     </Row>
@@ -44,11 +65,10 @@ export class CurrentClass extends Component {
                 </div>
 
                 <div className="imageClass">
-                    <img src={this.state.class.img} width="300px" alt="sdv"/>
+                    <img src={`https://starwars-visualguide.com/assets/img/planets/${img}.jpg`} width="300px" alt="sdv"/>
                 </div>
 
             </div>
-
         );
     }
 }
