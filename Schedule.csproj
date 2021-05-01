@@ -10,7 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Apis.Sheets.v4" Version="1.19.0.684" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.13" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +25,8 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\Error.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="GoogleTableParser\schedule.json" />
+    <_ContentIncludedByDefault Remove="GoogleTableParser\table_parser.json" />
   </ItemGroup>
 
   <ItemGroup>

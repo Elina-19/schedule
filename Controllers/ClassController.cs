@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GoogleParser;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Schedule.Models;
@@ -12,38 +13,24 @@ namespace Schedule.Controllers
     [ApiController]
     public class ClassController : ControllerBase
     {
-        private readonly ClassContext _context;
-        
-        /*
-         * Видимо мою мысль не поняли
-         * Этот контроллер должен отвечать только за получения конкретной аудитории, т.е.
-         * api/class/{id}
-         * В данном случае, этаж тут никакой роли не играет.
-         *
-         * Для этажа надо создать отдельный контроллер
-         * в котором будут запросы по типу, api/floor/{id}
-         * И в ответ на этот запрос, должен возвращаться массив объектов, в котором описаны аудитории
-         */
-        
-        // GET: api/classes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Class>>> GetClasses()
+        private GoogleTableParser _google;
+
+        private Class _mockClass = new Class
         {
-            return await _context.Classes.ToListAsync();
+            Discipline = "lorem ipsum"
+        };
+        
+        // GET: api/class
+        [HttpGet("{id}")]
+        public async Task<Class> GetClasses()
+        {
+            return _mockClass;
         }
 
-        // GET: api/classes/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Class>> GetClass(long id)
+        [HttpPut("update/{id}")]
+        public async Task UpdateClass()
         {
-            var certainClass = await _context.Classes.FindAsync(id);
-
-            if (certainClass == null)
-            {
-                return NotFound();
-            }
-
-            return certainClass;
+            
         }
     }
 }
