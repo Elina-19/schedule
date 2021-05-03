@@ -1,6 +1,6 @@
 ﻿namespace Schedule.Models
 {
-    public class Class
+    public class Audience
     {
         public int Id { get; set; }
         public string Floor { get; set; }

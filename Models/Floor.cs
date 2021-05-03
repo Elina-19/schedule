@@ -6,6 +6,6 @@ namespace Schedule.Models
     public class Floor
     {
         public int Id { get; set; }
-        public IEnumerable<Class> Classes { get; set; }
+        public IEnumerable<Audience> Audiences { get; set; }
     }
 }

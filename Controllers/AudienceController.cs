@@ -15,20 +15,35 @@ namespace Schedule.Controllers
     {
         private GoogleTableParser _google;
 
-        private Class _mockClass = new Class
+        private Audience _mockAudience = new Audience()
         {
             Discipline = "lorem ipsum"
         };
         
-        // GET: api/class
+        // GET: api/audience/{id}
         [HttpGet("{id}")]
-        public async Task<Class> GetClasses()
+        public async Task<Audience> GetClasses()
         {
-            return _mockClass;
+            return _mockAudience;
         }
 
+        // PUT api/update/{id}
         [HttpPut("update/{id}")]
-        public async Task UpdateClass()
+        public async Task UpdateAudience()
+        {
+            
+        }
+        
+        // POST
+        [HttpPost]
+        public async Task Post()
+        {
+            
+        }
+        
+        // DELETE
+        [HttpDelete("{id}")]
+        public async Task Delete()
         {
             
         }
