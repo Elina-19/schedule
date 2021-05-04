@@ -8,7 +8,7 @@ const NotFoundPage = () =>
             <div>
                     <ul>
                         <li>
-                            <Link to="/class/2/"><h3>Расписание на аудиторию</h3></Link>
+                            <Link to="/audience/2/"><h3>Расписание на аудиторию</h3></Link>
                         </li>
                         <li>
                             <Link to="/floor/:floorId"><h3>Расписание на этаж</h3></Link>
@@ -25,7 +25,7 @@ const NotFoundPage = () =>
                     </div>
                 <BrowserRouter>
                 <Switch>
-                    <Route path="/class/:classId" component={Audience}/>
+                    <Route path="/audience/:audienceId" component={Audience}/>
                     <Route path="/floor/:floorId" component ={Floor}/>
                 </Switch>
                 </BrowserRouter>

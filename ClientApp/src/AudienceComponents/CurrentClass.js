@@ -65,7 +65,7 @@ export class CurrentClass extends Component {
                 </div>
 
                 <div className="imageClass">
-                    <img src={`https://starwars-visualguide.com/assets/img/planets/${img}.jpg`} width="300px" alt="sdv"/>
+                    <img src={`https://starwars-visualguide.com/assets/img/planets/${img}.jpg`} width="300px" alt="Audience image"/>
                 </div>
 
             </div>

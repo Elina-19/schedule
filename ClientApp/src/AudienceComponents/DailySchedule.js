@@ -20,7 +20,6 @@ export class DailySchedule extends Component {
 
     onClassLoaded = (classes) => {
         this.setState({classes});
-        console.log(this.state);
     };
 
     updateClass() {
@@ -31,8 +30,6 @@ export class DailySchedule extends Component {
 
 
     render() {
-
-
         const content = this.state.classes.map(
             (ourClass, index) =>
                 <Row key={index} className="brdClass">
