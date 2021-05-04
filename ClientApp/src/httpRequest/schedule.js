@@ -1,6 +1,6 @@
 import Service from "./service";
 
-export default class ApiService {
+export default class Schedule {
     _apiBase = 'https://swapi.dev/api';
     request = new Service();
 

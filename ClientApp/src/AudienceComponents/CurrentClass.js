@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap';
 import './css/CurrentClass.css';
-import ApiService from '../Api/ApiService';
+import Service from '../httpRequest/schedule';
 
 export class CurrentClass extends Component {
 
     static displayName = CurrentClass.name;
 
-    apiService = new ApiService();
+    service = new Service();
 
     state = {
         currentClass: {}
@@ -23,8 +23,8 @@ export class CurrentClass extends Component {
     };
 
     updateClass(index) {
-        const id = this.apiService._extractClass(window.location.href) + index ;
-        this.apiService
+        const id = this.service._extractClass(window.location.href) + index ;
+        this.service
             .getClass(id)
             .then(this.onClassLoaded);
     }

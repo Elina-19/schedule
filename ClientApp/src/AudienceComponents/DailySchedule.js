@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap';
 import './css/DailySchedule.css';
-import ApiService from '../Api/ApiService';
+import Service from '../httpRequest/schedule';
 
 
 export class DailySchedule extends Component {
@@ -11,7 +11,7 @@ export class DailySchedule extends Component {
         classes: []
     };
 
-    apiService = new ApiService();
+    service = new Service();
 
     constructor() {
         super();
@@ -23,7 +23,7 @@ export class DailySchedule extends Component {
     };
 
     updateClass() {
-        this.apiService
+        this.service
             .getAllClasses()
             .then(this.onClassLoaded);
     }
