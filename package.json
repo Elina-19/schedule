@@ -2,6 +2,8 @@
   "name": "schedule",
   "version": "1.0.0",
   "devDependencies": {
+    "axios": "^0.21.1",
     "react-moment": "^1.1.1"
-  }
+  },
+  "dependencies": {}
 }

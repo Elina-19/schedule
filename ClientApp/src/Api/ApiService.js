@@ -1,6 +1,10 @@
+import Service from "./service";
+
+
 export default class ApiService {
 
     _apiBase = 'https://swapi.dev/api';
+    request = new Service();
 
     async getResource(url) {
         const res = await fetch(`${this._apiBase}${url}`);
@@ -14,9 +18,17 @@ export default class ApiService {
 
 
     async getAllClasses() {
-        const res = await this.getResource(`/planets/`);
-        
-        return res.results.map(this._transformClass);
+        return this.request.getRequest('/planets/')
+            .then(posts => {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve(posts);
+                    }, 1000)
+                });
+            })
+        // const res = await this.getResource();
+        //
+        // return res.results.map(this._transformClass);
     }
 
     async getClass(id) {
