@@ -1,31 +1,54 @@
-.container {
-    width: auto;
-    padding-left: 0px;
-    padding-right: 0px;
+@font-face {
+    font-family: "Pridi";
+    src: url("../fonts/Pridi/Pridi-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
 }
 
-.dailyScheduleMain {
+.dailySchedule {
+    font-family: "Pridi", serif;
+    padding-inline: 5%;
     display: flex;
-    flex-direction: row;
     justify-content: center;
+    margin-top: 20px;
+    font-size: 25px;
 }
-
-.dailyScheduleP {
-    margin-inline: 10px;
-    padding-inline: 3px;
-
-    border: 1px solid #cccccc;
-    border-radius: 3px;
-}
-
-.dailyScheduleButton {
-    background-color: lightslategrey; /* Green */
-    border-radius: 2px;
+.dailyScheduleDay{
+    background: #9BDCF1;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
     padding-inline: 10px;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    padding-top: 2px;
+    margin-inline: 10px;
 }
+/*.container {*/
+/*    width: auto;*/
+/*    padding-left: 0px;*/
+/*    padding-right: 0px;*/
+/*}*/
+
+/*.dailyScheduleMain {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.dailyScheduleP {*/
+/*    margin-inline: 10px;*/
+/*    padding-inline: 3px;*/
+
+/*    border: 1px solid #cccccc;*/
+/*    border-radius: 3px;*/
+/*}*/
+
+/*.dailyScheduleButton {*/
+/*    background-color: lightslategrey; !* Green *!*/
+/*    border-radius: 2px;*/
+/*    padding-inline: 10px;*/
+/*    border: none;*/
+/*    color: white;*/
+/*    text-align: center;*/
+/*    text-decoration: none;*/
+/*    display: inline-block;*/
+/*    font-size: 16px;*/
+/*}*/

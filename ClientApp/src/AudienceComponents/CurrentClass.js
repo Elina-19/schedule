@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Row, Col} from 'reactstrap';
 import './css/CurrentClass.css';
 import Service from '../httpRequest/schedule';
 
@@ -23,7 +22,7 @@ export class CurrentClass extends Component {
     };
 
     updateClass(index) {
-        const id = this.service._extractClass(window.location.href) + index ;
+        const id = this.service._extractClass(window.location.href) + index;
         this.service
             .getClass(id)
             .then(this.onClassLoaded);
@@ -33,41 +32,34 @@ export class CurrentClass extends Component {
 
         const {
             currentClass: {
-                time,
-                nameOfDiscipline,
-                groupNumber,
-                teacherName,
-                classType,
-                img,
-                idClass
+                number,
+                name,
+                groups,
+                teacher,
+                time
             }
         } = this.state;
 
 
         return (
-            <div className="currentClass">
-                <div className="currentClassInform">
+            <div className="currentClassDiscipline">
 
-                    <p className="currentClassP">{groupNumber}</p>
-                    <p className="currentClassP">{nameOfDiscipline}</p>
-
-                    <Row>
-                        <Col min-width="200px">Статус:</Col>
-                        <Col>
-                            <p className="currentClassP">{time}</p>
-                            <p className="currentClassP">{classType}</p>
-                            <p className="currentClassP">{teacherName}</p>
-                            <p className="currentClassP">{idClass}</p>
-
-                        </Col>
-                    </Row>
-
+                <div className="currentClassInfo">
+                    <div className="currentClassNumber">
+                        {number}
+                    </div>
+                    <div  className="currentClassName">{name}</div>
+                    <div  className="currentClassGroups">{groups}</div>
+                    <div className="currentClassTeacher">{teacher}</div>
                 </div>
-
-                <div className="imageClass">
-                    <img src={`https://starwars-visualguide.com/assets/img/planets/${img}.jpg`} width="300px" alt="Audience image"/>
+                <div className="currentClassTimes">
+                <div className="currentClassTime">
+                    {time}
                 </div>
-
+                    <div className="currentClassStart">
+                       Начнётся через 8 минут
+                    </div>
+                </div>
             </div>
         );
     }
