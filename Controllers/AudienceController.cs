@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.XPath;
 using GoogleParser;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,20 +12,20 @@ namespace Schedule.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClassController : ControllerBase
+    public class AudienceController : ControllerBase
     {
-        private GoogleTableParser _google;
-
-        private Audience _mockAudience = new Audience()
-        {
-            Discipline = "lorem ipsum"
-        };
-        
         // GET: api/audience/{id}
-        [HttpGet("{id}")]
-        public async Task<Audience> GetClasses()
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Audience))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult GetClasses(int id)
         {
-            return _mockAudience;
+            var result = MockData.FindAudience( id );
+            
+            if ( result == null )
+                return BadRequest();
+
+            return Ok( result );
         }
 
         // PUT api/update/{id}

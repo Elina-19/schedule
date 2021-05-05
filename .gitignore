@@ -436,3 +436,4 @@ fabric.properties
 #parser's credentials
 table_parser.json
 
+.idea

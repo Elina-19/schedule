@@ -1,12 +1,12 @@
-﻿namespace Schedule.Models
+﻿using System.Collections.Generic;
+
+namespace Schedule.Models
 {
     public class Audience
     {
-        public int Id { get; set; }
+        public int Number { get; set; }
         public string Floor { get; set; }
-        public string Number { get; set; }
-        public string Discipline { get; set; }
-        public string Teacher { get; set; }
-        public string Groups { get; set; }
+        public Lesson CurrentLesson { get; set; }
+        public List<Lesson> Lessons { get; set; }
     }
 }

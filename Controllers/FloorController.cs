@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Schedule.Models;
 
@@ -9,21 +9,21 @@ namespace Schedule.Controllers
     [ApiController]
     public class FloorController : ControllerBase
     {
-        private Floor _mockFloor = new Floor()
-        {
-            Audiences = new []{new Audience()
-            {
-                Discipline = "lorem ipsum"
-            }
-                
-            }
-        };
-        
         // GET: api/floor/{id}
         [HttpGet( "{id}" )]
-        public async Task<Floor> GetFloor()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Floor))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult GetFloor(int id)
         {
-            return _mockFloor;
+            switch ( id )
+            {
+                case 12:
+                    return Ok(MockData.Floor12);
+                case 13:
+                    return Ok(MockData.Floor13);
+                default:
+                    return NotFound();
+            }
         }
 
         // PUT
