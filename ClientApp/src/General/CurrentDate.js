@@ -14,17 +14,25 @@ export default class CurrentDate {
     * Я хотел бы, чтобы вы всей командой в дальнейшем следовали такому принципу написания кода.
     * Это, грубо говоря, правила хорошего тона
     * */
-    
+
     constructor(props) {
 
         var today = new Date(),
             time =  today.getHours() + ":" + this.getCorrectMinutes(today.getMinutes()),
-            day = today.getDay();
+            dayOfWeekIndex = today.getDay(),
+            day = today.getDate(),
+            month = today.getMonth();
 
         this.state = {
             time: time,
-            day: day
+            dayOfWeekIndex: dayOfWeekIndex,
+            day: day,
+            month: month,
         };
+    }
+
+    getTime() {
+        return this.state.time;
     }
 
     getCorrectMinutes(minutes) {
@@ -34,22 +42,16 @@ export default class CurrentDate {
         return minutes;
     }
 
-    // Посмотрите, есть ли в JS такое понятие как статические методы
-    currentDayOfWeek() {
-        // Сделай Today свойством класса и один раз инициализируй его в конструкторе.
-        // Потом вызывай в методох необходимые методы
-        const today = new Date();
-        return today.getDay();
+    getIndexOfCurrentDayOfWeek() {
+        return this.state.dayOfWeekIndex;
     }
 
-    currentMonth() {
-        const today = new Date();
-        return today.getMonth();
+    getCurrentMonth() {
+        return this.state.month;
     }
 
-    currentDay() {
-        const today = new Date();
-        return today.getDate();
+    getCurrentDay() {
+        return this.state.day;
     }
 
     componentDidMount() {
@@ -64,13 +66,20 @@ export default class CurrentDate {
 
     tick() {
         var today = new Date(),
-            time = today.getHours() + ":" + this.getCorrectMinutes(today.getMinutes());
+            time = today.getHours() + ":" + this.getCorrectMinutes(today.getMinutes()),
+            dayOfWeekIndex = today.getDay(),
+            day = today.getDate(),
+            month = today.getMonth();
+
         this.setState({
             time: time,
+            dayOfWeekIndex: dayOfWeekIndex,
+            day: day,
+            month: month,
         });
     }
 
-    dayOfWeek() {
+    getCurrentDayOfWeek() {
         var daysOfWeek = [
             'пн',
             'вт',
@@ -80,7 +89,7 @@ export default class CurrentDate {
             'сб',
             'вс'
         ];
-        return daysOfWeek[this.state.day];
+        return daysOfWeek[this.state.dayOfWeekIndex];
     }
 
 }
