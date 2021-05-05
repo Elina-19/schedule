@@ -36,9 +36,9 @@ export class DailySchedule extends Component {
                     <Col className="brdColClass">{index+1}</Col>
 
                     <Col className="brdColClass">{ourClass.time}</Col>
-                    <Col className="brdColClass">{ourClass.groupNumber}</Col>
-                    <Col className="brdColClass">{ourClass.nameOfDiscipline}</Col>
-                    <Col>{ourClass.teacherName}</Col>
+                    <Col className="brdColClass">{ourClass.groups}</Col>
+                    <Col className="brdColClass">{ourClass.name}</Col>
+                    <Col>{ourClass.teacher}</Col>
                 </Row>
         );
 
