@@ -6,10 +6,10 @@ export default class Schedule {
 
     async getAllClasses() {
         return this.request.getRequest(`${this._apiBase}/planets/`)
-            .then(posts => {
+            .then(audiences => {
                 return new Promise(resolve => {
                     setTimeout(() => {
-                        resolve(posts.data.results.map(this._transformClass));
+                        resolve(audiences.data.results.map(this._transformClass));
                     }, 1000)
                 });
             })
@@ -17,10 +17,10 @@ export default class Schedule {
 
     async getClass(id) {
         return this.request.getRequest(`${this._apiBase}/planets/${id}/`)
-            .then(posts => {
+            .then(audiences => {
                 return new Promise(resolve => {
                     setTimeout(() => {
-                        resolve(this._transformClass(posts.data));
+                        resolve(this._transformClass(audiences.data));
                     }, 1000)
                 });
             })
