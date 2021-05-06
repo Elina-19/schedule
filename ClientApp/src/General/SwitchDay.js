@@ -40,15 +40,16 @@ export class SwitchDay extends Component {
 
         return (
                 <div className="dailySchedule">
-                    <div>
-                        <img src="../../public/Vector_5.png" alt="str"/>
-                    </div>
+                    <button className="switchDayButton">
+                        &#8592;
+                    </button>
                     <div  className="dailyScheduleDay">
-                     {this.currentDate.getCurrentDay()} {months[this.currentDate.getCurrentMonth()]}, {week[this.currentDate.getIndexOfCurrentDayOfWeek()]}, нечетная неделя
+                     {this.currentDate.getCurrentDay()} {months[this.currentDate.getCurrentMonth()]}, {week[this.currentDate.getIndexOfCurrentDayOfWeek()]},
+                        нечетная неделя
                     </div>
-                    <div>
-                        <button className="dailyScheduleButtonRight">→</button>
-                    </div>
+                    <button className="switchDayButton">
+                        &#8594;
+                    </button>
                 </div>
         );
     }
