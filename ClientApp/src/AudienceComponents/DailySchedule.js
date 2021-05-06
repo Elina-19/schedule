@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Row, Col} from 'reactstrap';
 import './css/DailySchedule.css';
 import Service from '../httpRequest/schedule';
 
@@ -32,28 +31,30 @@ export class DailySchedule extends Component {
     render() {
         const content = this.state.classes.map(
             (ourClass, index) =>
-                <Row key={index} className="brdClass">
-                    <Col className="brdColClass">{index+1}</Col>
-
-                    <Col className="brdColClass">{ourClass.time}</Col>
-                    <Col className="brdColClass">{ourClass.groups}</Col>
-                    <Col className="brdColClass">{ourClass.name}</Col>
-                    <Col>{ourClass.teacher}</Col>
-                </Row>
+                <tr key={index}>
+                    <th>{index+1}</th>
+                    <th>{ourClass.time}</th>
+                    <th>{ourClass.groups}</th>
+                    <th>{ourClass.name}</th>
+                    <th>{ourClass.teacher}</th>
+                </tr>
         );
 
         return (
-            <div>
-                <Row  className="brdClass">
-                    <Col className="brdColClass">Номер пары</Col>
-
-                    <Col className="brdColClass">Время</Col>
-                    <Col className="brdColClass">Группа</Col>
-                    <Col className="brdColClass">Название предмета</Col>
-                    <Col>Имя преподавателя</Col>
-                </Row>
+            <table className="tableR">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Время</th>
+                    <th>Группа</th>
+                    <th>Название предмета</th>
+                    <th>Имя преподавателя</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {content}
-            </div>
+                </tbody>
+            </table>
         );
     }
 }

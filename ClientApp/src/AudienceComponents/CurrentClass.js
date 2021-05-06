@@ -56,8 +56,9 @@ export class CurrentClass extends Component {
                 <div className="currentClassTime">
                     {time}
                 </div>
+                    <img className="currentClassTimeRange" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAAALCAYAAAAKqNOlAAAAaklEQVRoQ+3TsRGAMAwEQatIGJFRgxpyqVCEP1zn/mBHVz39Lo8AgSOBuuf5jhZ8JkBgCckREAgICCmAaIKAkNwAgYCAkAKIJggIyQ0QCAgIKYBogoCQ3ACBgICQAogmCNQ1vTEQIHAm8AMEiRZsJUT99AAAAABJRU5ErkJggg=="/>
                     <div className="currentClassStart">
-                       Начнётся через 8 минут
+                        Осталось 19 мин
                     </div>
                 </div>
             </div>

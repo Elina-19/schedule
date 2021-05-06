@@ -11,7 +11,7 @@
     background-color: #182628;
     padding-inline: 5%;
     color: white;
-    font-size: 25px;
+    font-size: 30px;
 
 }
 .statusBarLeft {
@@ -19,7 +19,7 @@
     flex-direction: row;
 }
 .statusBarTime {
-    font-size: 63px;
+    font-size: 72px;
     padding-inline: 15%;
 }
 
@@ -29,4 +29,23 @@
 }
 .statusBarWeek {
     padding-top: 25px;
+}
+
+@media screen and (max-width: 1440px) {
+    .statusBarStatus {
+        padding-inline: 5%;
+        font-size: 2vw;
+    }
+    .statusBarTime {
+        font-size: 5vw;
+        padding-inline: 15%;
+    }
+
+    .statusBarDays {
+        padding-top:  3%;
+    }
+    .statusBarWeek {
+        padding-top: 3%;
+    }
+
 }
