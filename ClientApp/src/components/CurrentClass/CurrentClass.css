@@ -1,0 +1,193 @@
+@font-face {
+    font-family: "Pridi";
+    src: url("../../assets/fonts/Pridi/Pridi-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+.currentClassDiscipline {
+    font-family: "Pridi", serif;
+    padding-inline: 20%;
+    display: flex;
+}
+
+
+/*left panel*/
+.currentClassInfo {
+    margin-right: 5%;
+}
+
+.currentClassNumber {
+    font-size: 60px;
+    text-decoration-line: underline;
+    text-align: center;
+}
+
+.currentClassName {
+    font-size: 40px;
+}
+
+.currentClassGroups {
+    font-size: 30px;
+
+}
+
+.currentClassTeacher {
+    font-size: 35px;
+    min-width: 625px;
+}
+
+
+/* right panel*/
+.currentClassTimes {
+    margin-top: 88px;
+}
+
+.currentClassTime {
+    padding-inline: 0;
+    font-size: 50px;
+    text-align: center;
+
+}
+
+.currentClassStart {
+    font-size: 25px;
+    text-align: center;
+}
+.currentClassTimeRange{
+    padding: 7px;
+    padding-right: 45px;
+    border: 1px solid #C1BFBF;
+    border-radius: 10px;
+    background: #ECEBEB;
+}
+
+@media screen and (max-width: 1440px) {
+    .currentClassDiscipline {
+        font-family: "Pridi", serif;
+        padding-inline: 10%;
+        display: flex;
+    }
+
+}
+
+@media screen and (max-width: 1170px) {
+
+
+    /*left panel*/
+    .currentClassInfo {
+        margin-right: 5%;
+    }
+
+    .currentClassNumber {
+        padding-top: 7%;
+        font-size: 4vw;
+        text-decoration-line: underline;
+        text-align: center;
+    }
+
+    .currentClassName {
+        font-size: 3vw;
+    }
+
+    .currentClassGroups {
+        font-size: 3vw;
+
+    }
+
+    .currentClassTeacher {
+        font-size: 3vw;
+        min-width: 50%;
+    }
+
+
+    /* right panel*/
+    .currentClassTimes {
+        margin-top: 7%;
+    }
+
+    .currentClassTime {
+        padding-inline: 0;
+        font-size: 4vw;
+    }
+
+    .currentClassStart {
+        font-size: 3vw;
+    }
+
+    .currentClassTimeRange{
+        width: 70%;
+        padding: 6px;
+        padding-right: 20px;
+        border: 1px solid #C1BFBF;
+        border-radius: 10px;
+        background: #ECEBEB;
+        margin-left: 15%;
+    }
+
+
+
+}
+/*@media screen and (max-width: 1440px) {*/
+/*    .currentClassDiscipline {*/
+/*        font-family: "Pridi", serif;*/
+/*        padding-inline: 5%;*/
+/*        display: flex;*/
+/*    }*/
+
+/*    !*left panel*!*/
+/*    .currentClassInfo {*/
+/*        margin-right: 5%;*/
+/*    }*/
+
+/*    .currentClassNumber {*/
+/*        font-size: 40px;*/
+/*    }*/
+
+/*    .currentClassName {*/
+/*        font-size: 30px;*/
+/*    }*/
+
+/*    .currentClassGroups {*/
+/*        font-size: 20px;*/
+/*    }*/
+
+/*    .currentClassTeacher {*/
+/*        font-size: 25px;*/
+/*        min-width: 400px;*/
+/*    }*/
+
+
+/*    !* right panel*!*/
+/*    .currentClassTimes {*/
+/*        margin-top: 60px;*/
+/*    }*/
+
+/*    .currentClassTime {*/
+/*        padding-inline: 0;*/
+/*        font-size: 35px;*/
+/*        text-align: center;*/
+
+/*    }*/
+
+/*    .currentClassStart {*/
+/*        font-size: 20px;*/
+/*    }*/
+/*    .currentClassTimeRange{*/
+/*        padding: 7px;*/
+/*        padding-right: 45px;*/
+/*        border: 1px solid #C1BFBF;*/
+/*        border-radius: 10px;*/
+/*        background: #ECEBEB;*/
+/*    }*/
+
+
+/*}*/
+/*@media screen and (max-width: 1000px) {*/
+
+/*    .currentClassDiscipline {*/
+/*        font-family: "Pridi", serif;*/
+/*        padding-inline: 5%;*/
+/*        display: flex;*/
+/*    }*/
+/*}*/
