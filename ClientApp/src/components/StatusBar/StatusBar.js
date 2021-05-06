@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CurrentDate from './CurrentDate';
+import CurrentDate from '../CurrentDate/CurrentDate';
 import './StatusBar.css';
 
 export class StatusBar extends Component {
@@ -34,15 +34,15 @@ export class StatusBar extends Component {
 
     render() {
         return (
-            <div className="statusBar">
-                <div className="statusBarCurrentTime"  > {this.state.currentDate.getTime()} </div>
-                <div className="statusBarCurrentDay">{this.state.currentDate.getCurrentDayOfWeek()}</div>
-                <div  className="statusBarSearchAndInput"> <input className="statusBarInput" >
-                </input>
-                    <button  className="statusBarSearchButton">
-                        Искать
-                    </button>
+            <div className="statusBarStatus">
+                <div className="statusBarLeft">
+                    <div className="statusBarTime"> {this.state.currentDate.getTime()} </div>
+                    <div className="statusBarDays">
+                        <div>{this.state.currentDate.getCurrentDayOfWeek()}</div>
+                        <div>{this.state.currentDate.getCurrentDayOfWeek()}</div>
+                    </div>
                 </div>
+                <div className="statusBarWeek"> нечетная неделя</div>
             </div>
         )
 

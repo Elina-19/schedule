@@ -1,0 +1,51 @@
+@font-face {
+    font-family: "Pridi";
+    src: url("../../assets/fonts/Pridi/Pridi-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+.statusBarStatus {
+    font-family: "Pridi", serif;
+    display: flex;
+    justify-content: space-between;
+    background-color: #182628;
+    padding-inline: 5%;
+    color: white;
+    font-size: 30px;
+
+}
+.statusBarLeft {
+    display: flex;
+    flex-direction: row;
+}
+.statusBarTime {
+    font-size: 72px;
+    padding-inline: 15%;
+}
+
+.statusBarDays {
+    padding-top: 10px;
+    justify-content: center;
+}
+.statusBarWeek {
+    padding-top: 25px;
+}
+
+@media screen and (max-width: 1440px) {
+    .statusBarStatus {
+        padding-inline: 5%;
+        font-size: 2vw;
+    }
+    .statusBarTime {
+        font-size: 5vw;
+        padding-inline: 15%;
+    }
+
+    .statusBarDays {
+        padding-top:  3%;
+    }
+    .statusBarWeek {
+        padding-top: 3%;
+    }
+
+}

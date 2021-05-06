@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap';
-import '../custom.css';
 
 export class FloorSchedule extends Component {
     static displayName = FloorSchedule.name;

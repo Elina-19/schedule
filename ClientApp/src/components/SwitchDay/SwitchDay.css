@@ -1,0 +1,63 @@
+@font-face {
+    font-family: "Pridi";
+    src: url("../../assets/fonts/Pridi/Pridi-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+.dailySchedule {
+    line-height: 39px;
+    font-family: "Pridi", serif;
+    padding-inline: 5%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+.dailyScheduleDay{
+    background: #9BDCF1;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding-inline: 10px;
+    padding-top: 2px;
+    margin-inline: 10px;
+}
+.dailyScheduleArrow{
+    padding-top: 10px;
+}
+.switchDayButton{
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+}
+
+.switchDayButton:hover{
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 1440px) {
+    .dailySchedule {
+        line-height: 39px;
+        padding-inline: 5%;
+        margin-top: 20px;
+        font-size: 2vw;
+        margin-bottom: 25px;
+    }
+    .dailyScheduleDay{
+        box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        padding-inline: 10px;
+        margin-inline: 10px;
+        height: 15%;
+    }
+
+}
+
+@media screen and (max-width: 1440px) {
+    .dailyScheduleDay {
+        height: 10%;
+    }
+}

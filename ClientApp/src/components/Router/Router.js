@@ -1,8 +1,8 @@
 import React from 'react';
-import Audience from '../AudienceComponents/Audience';
+import Audience from '../Audience/Audience';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import NotFoundPage from '../General/NotFoundPage'
-import Floor from '../FloorComponents/Floor'
+import NotFoundPage from '../NotFoundPage/NotFoundPage'
+import Floor from '../Floor/Floor'
 
 // https://reactrouter.com/web/example/no-match переделать, как тут описано
 

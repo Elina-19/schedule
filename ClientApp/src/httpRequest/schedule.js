@@ -18,25 +18,21 @@ export default class Schedule {
     async getClass(id) {
         return this.request.getRequest(`${this._apiBase}/planets/${id}/`)
             .then(posts => {
-                console.log(posts.data)
                 return new Promise(resolve => {
                     setTimeout(() => {
-                        resolve(this._transformClass(posts.data, id));
+                        resolve(this._transformClass(posts.data));
                     }, 1000)
                 });
             })
     }
 
-    _transformClass(planet, id) {
+    _transformClass(planet) {
         return {
-            numberOfClass: planet.gravity,
-            time: planet.diameter,
-            nameOfDiscipline: planet.name,
-            groupNumber: planet.orbital_period,
-            teacherName: planet.edited,
-            classType: planet.gravity,
-            img: id,
-            idClass: planet.edited
+            number: planet.gravity,
+            name: planet.name,
+            groups: planet.orbital_period,
+            teacher:  planet.edited,
+            time:  planet.diameter
         };
     }
 

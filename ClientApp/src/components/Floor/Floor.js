@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {Layout} from '../General/Layout';
-import {StatusBar} from '../General/StatusBar';
-import {FloorSchedule} from './FloorSchedule';
-import {SwitchDay} from '../General/SwitchDay'
-import '../custom.css'
+import {Layout} from '../Layout/Layout';
+import {StatusBar} from '../StatusBar/StatusBar';
+import {FloorSchedule} from '../FloorSchedule/FloorSchedule';
+import {SwitchDay} from '../SwitchDay/SwitchDay'
 
 export default class Floor extends Component {
 

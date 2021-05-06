@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Layout} from '../General/Layout';
-import {CurrentClass} from './CurrentClass';
-import {StatusBar} from '../General/StatusBar';
-import {DailySchedule} from './DailySchedule';
-import {SwitchDay} from '../General/SwitchDay';
-import '../custom.css'
+import {Layout} from '../Layout/Layout';
+import {CurrentClass} from '../CurrentClass/CurrentClass';
+import {StatusBar} from '../StatusBar/StatusBar';
+import {DailySchedule} from '../DailySchedule/DailySchedule';
+import {SwitchDay} from '../SwitchDay/SwitchDay';
 
 export default class Audience extends Component {
 

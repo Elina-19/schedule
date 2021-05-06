@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
+import CurrentDate from '../CurrentDate/CurrentDate'
 import './SwitchDay.css';
-import CurrentDate from '../General/CurrentDate'
-
 export class SwitchDay extends Component {
 
     currentDate = new CurrentDate();
@@ -40,19 +39,17 @@ export class SwitchDay extends Component {
         const { week, months } = this.state;
 
         return (
-            <div>
-                <div className="dailyScheduleMain">
-                    <div>
-                        <button className="dailyScheduleButton">←</button>
+                <div className="dailySchedule">
+                    <button className="switchDayButton">
+                        &#8592;
+                    </button>
+                    <div  className="dailyScheduleDay">
+                     {this.currentDate.getCurrentDay()} {months[this.currentDate.getCurrentMonth()]}, {week[this.currentDate.getIndexOfCurrentDayOfWeek()]}, нечетная неделя
                     </div>
-                    <div><p
-                        className="dailyScheduleP">{this.currentDate.getCurrentDay()} {months[this.currentDate.getCurrentMonth()]}, {week[this.currentDate.getIndexOfCurrentDayOfWeek()]}</p>
-                    </div>
-                    <div>
-                        <button className="dailyScheduleButton">→</button>
-                    </div>
+                    <button className="switchDayButton">
+                        &#8594;
+                    </button>
                 </div>
-            </div>
         );
     }
 }
