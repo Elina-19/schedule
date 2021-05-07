@@ -1,22 +1,23 @@
 import Service from "./service";
 
 export default class Schedule {
-    _apiBase = 'https://swapi.dev/api';
+    _apiBase = 'https://localhost:5001/api';
     request = new Service();
 
-    async getAllClasses() {
-        return this.request.getRequest(`${this._apiBase}/planets/`)
+    async getAllClasses(id) {
+        return this.request.getRequest(`${this._apiBase}/audience/${id}`)
             .then(audiences => {
                 return new Promise(resolve => {
+
                     setTimeout(() => {
-                        resolve(audiences.data.results.map(this._transformClass));
+                        resolve(audiences.data.lessons.map(this._transformAllClass));
                     }, 1000)
                 });
             })
     }
 
     async getClass(id) {
-        return this.request.getRequest(`${this._apiBase}/planets/${id}/`)
+        return this.request.getRequest(`${this._apiBase}/audience/${id}/`)
             .then(audiences => {
                 return new Promise(resolve => {
                     setTimeout(() => {
@@ -26,13 +27,21 @@ export default class Schedule {
             })
     }
 
-    _transformClass(planet) {
+    _transformClass(audience) {
         return {
-            number: planet.gravity,
-            name: planet.name,
-            groups: planet.orbital_period,
-            teacher:  planet.edited,
-            time:  planet.diameter
+            number: audience.number,
+            name: audience.currentLesson.discipline,
+            groups: audience.currentLesson.groups,
+            teacher:  audience.currentLesson.teacher,
+            time:  audience.currentLesson.time
+        };
+    }
+    _transformAllClass(audience) {
+        return {
+            name: audience.discipline,
+            groups: audience.groups,
+            teacher:  audience.teacher,
+            time:  audience.time
         };
     }
 

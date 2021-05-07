@@ -22,8 +22,9 @@ export class DailySchedule extends Component {
     };
 
     updateClass() {
+        const id = this.service._extractClass(window.location.href);
         this.service
-            .getAllClasses()
+            .getAllClasses(id)
             .then(this.onClassLoaded);
     }
 
