@@ -3,8 +3,9 @@ import {Layout} from '../Layout/Layout';
 import {StatusBar} from '../StatusBar/StatusBar';
 import {FloorSchedule} from '../FloorSchedule/FloorSchedule';
 import {SwitchDay} from '../SwitchDay/SwitchDay'
+import {connect} from 'react-redux';
 
-export default class Floor extends Component {
+ class Floor extends Component {
 
     static displayName = Floor.name;
     //TODO сделать еще отдельные css для классов в FloorComponents и таблицу как вторую компоненту
@@ -20,3 +21,7 @@ export default class Floor extends Component {
         );
     }
 }
+export default connect(
+    state=>({}),
+    dispatch=>({})
+)(Floor);

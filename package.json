@@ -4,5 +4,9 @@
   "devDependencies": {
     "axios": "^0.21.1",
     "react-moment": "^1.1.1"
+  },
+  "dependencies": {
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0"
   }
 }
