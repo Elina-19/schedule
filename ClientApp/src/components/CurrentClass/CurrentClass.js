@@ -27,18 +27,13 @@ export class CurrentClass extends Component {
             .getClass(id)
             .then(this.onClassLoaded);
     }
+    
+    
 
     render() {
 
-        const {
-            currentClass: {
-                number,
-                name,
-                groups,
-                teacher,
-                time
-            }
-        } = this.state;
+
+
 
 
         return (
@@ -46,15 +41,19 @@ export class CurrentClass extends Component {
 
                 <div className="currentClassInfo">
                     <div className="currentClassNumber">
-                        {number}
+                        {this.state.currentClass.number}
                     </div>
-                    <div  className="currentClassName">{name}</div>
-                    <div  className="currentClassGroups">{groups}</div>
-                    <div className="currentClassTeacher">{teacher}</div>
+                    <div  className="currentClassName">{this.state.currentClass.name}</div>
+                    
+                    {console.log(Array.isArray(this.state.currentClass.groups))}
+                    {console.log(this.state.currentClass.groups)}
+
+                    <div  className="currentClassGroups">{this.state.currentClass.groups}</div>
+                    <div className="currentClassTeacher">{this.state.currentClass.teacher}</div>
                 </div>
                 <div className="currentClassTimes">
                 <div className="currentClassTime">
-                    {time}
+                    {this.state.currentClass.time}
                 </div>
                     <img className="currentClassTimeRange" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAAALCAYAAAAKqNOlAAAAaklEQVRoQ+3TsRGAMAwEQatIGJFRgxpyqVCEP1zn/mBHVz39Lo8AgSOBuuf5jhZ8JkBgCckREAgICCmAaIKAkNwAgYCAkAKIJggIyQ0QCAgIKYBogoCQ3ACBgICQAogmCNQ1vTEQIHAm8AMEiRZsJUT99AAAAABJRU5ErkJggg=="/>
                     <div className="currentClassStart">
