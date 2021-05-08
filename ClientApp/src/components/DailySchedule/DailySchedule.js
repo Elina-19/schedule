@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
 import './DailySchedule.css';
 import Service from '../../httpRequest/schedule';
+import {fetchAudience} from '../../actions/actions'
+import {connect} from "react-redux";
 
 
 export class DailySchedule extends Component {
     static displayName = DailySchedule.name;
+
+    componentDidMount() {
+        const {dispatch, match:{params: audienceId}} = this.props;
+        dispatch(fetchAudience(audienceId));
+    }
 
     state = {
         classes: []
@@ -28,8 +35,10 @@ export class DailySchedule extends Component {
             .then(this.onClassLoaded);
     }
 
-
     render() {
+        const {isFetching} = this.props.status;
+        const {classData} = this.props.ourClass;
+
         const content = this.state.classes.map(
             (ourClass, index) =>
                 <tr key={index}>
@@ -50,7 +59,7 @@ export class DailySchedule extends Component {
                     <th>Группа</th>
                     <th>Название предмета</th>
                     <th>Имя преподавателя</th>
-                    </tr>
+                </tr>
                 </thead>
                 <tbody>
                 {content}
@@ -59,3 +68,6 @@ export class DailySchedule extends Component {
         );
     }
 }
+const mapStateToProps = ({DailySchedule, status}) => {return {DailySchedule, status}};
+
+export default connect(mapStateToProps)(DailySchedule)

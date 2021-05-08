@@ -5,8 +5,7 @@ import {BrowserRouter} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import Router from './components/Router/Router'
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import configureStore from './reduxComponents/configureStore';
+import configureStore from './store/configureStore';
 
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');

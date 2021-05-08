@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import '../DailySchedule/DailySchedule.css';
 import Service from '../../httpRequest/schedule';
-import {fetchFloor} from "../../reduxComponents/actions";
+import {fetchFloor} from "../../actions/actions";
+import {connect} from "react-redux";
 
 
 export class FloorSchedule extends Component {
@@ -36,6 +37,9 @@ export class FloorSchedule extends Component {
 
 
     render() {
+        const {isFetching} = this.props.status;
+        const {classData} = this.props.ourClass;
+        
         const content = this.state.classes.map(
             (ourClass, index) =>
                 <tr key={index}>
@@ -65,6 +69,10 @@ export class FloorSchedule extends Component {
         );
     }
 }
+const mapStateToProps = ({FloorSchedule, status}) => {return {FloorSchedule, status}};
+
+export default connect(mapStateToProps)(FloorSchedule)
+
 
 
 

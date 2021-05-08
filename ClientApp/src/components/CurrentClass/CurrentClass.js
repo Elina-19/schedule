@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-
 import './CurrentClass.css';
-import {fetchAudience} from "../../reduxComponents/actions";
+import {fetchAudience} from "../../actions/actions";
 
 export class CurrentClass extends Component {
 
-    componentDidMount() {
-        const {dispatch, match: {params: audienceId}} = this.props;
-        dispatch(fetchAudience(audienceId));
-
-        console.log("ComponentDidMount Result is ", this.props);
-    }
+    // componentDidMount() {
+    //     const {dispatch, match: {params: audienceId}} = this.props;
+    //     dispatch(fetchAudience(audienceId));
+    //
+    //     console.log("ComponentDidMount Result is ", this.props);
+    // }
 
     render() {
         const {isFetching} = this.props.status;
@@ -46,6 +45,6 @@ export class CurrentClass extends Component {
     }
 }
 
-const mapStateToProps = ({currentClass, status}) => {return {currentClass, status}};
-
-export default connect(mapStateToProps)(CurrentClass)
+// const mapStateToProps = ({currentClass, status}) => {return {currentClass, status}};
+//
+// export default connect(mapStateToProps)(CurrentClass)

@@ -1,8 +1,9 @@
 import * as Actions from '../actions/actions';
-import CurrentDate from '../CurrentDate/CurrentDate';
+import CurrentDate from '../components/CurrentDate/CurrentDate';
 
+const currentDate = new CurrentDate();
 const switchDayState = {
-    currentDate = new CurrentDate(),
+    currentDate,
 };
 
 function switchDayReducer(state = switchDayState, action) {
