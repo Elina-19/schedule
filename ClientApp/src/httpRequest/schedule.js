@@ -19,6 +19,7 @@ export default class Schedule {
     async getClass(id) {
         return this.request.getRequest(`${this._apiBase}/audience/${id}/`)
             .then(audiences => {
+                console.log(audiences);
                 return new Promise(resolve => {
                     setTimeout(() => {
                         resolve(this._transformClass(audiences.data));

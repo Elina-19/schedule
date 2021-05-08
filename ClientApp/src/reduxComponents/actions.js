@@ -49,6 +49,13 @@ function receiveAudience(audience) {
     }
 }
 
+function receiveFloor(floor){
+    return {
+        type: RECEIVE_FLOOR,
+        floor: floor
+    }
+}
+
 function incrementDailyShedule(classes) {
     return {
         type: INCREMEMT_DAILY_SCHEDULE,
@@ -91,14 +98,33 @@ function decrementSwitchDay(currentDate) {
     }
 }
 
+
+export function fetchFloor(floorId) {
+    return function (dispatch) {
+        // TODO - добавить в сервис метод для запроса инфы по этажу
+        const floor = response(scheduleService.getClass(floorId), dispatch);
+
+        return floor.then(floor => {
+            const mappedFloor = {
+                id: post.data.post.id,
+                postTitle: post.data.post.postTitle,
+                postText: post.data.post.postText,
+                postAuthor: post.data.post.postAuthor,
+                authorId: post.data.post.authorId
+            };
+            dispatch(receiveFloor(mappedFloor))
+        });
+    }
+}
+
+
 export function fetchAudience(audienceId) {
     return function (dispatch) {
 
         const audience = response(scheduleService.getClass(audienceId), dispatch);
 
         // TODO - заменить на свойства аудитории
-        return post.then(post => {
-
+        return audience.then(post => {
             const mappedPost = {
                 id: post.data.post.id,
                 postTitle: post.data.post.postTitle,

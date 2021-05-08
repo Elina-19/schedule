@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
 import '../DailySchedule/DailySchedule.css';
 import Service from '../../httpRequest/schedule';
+import {fetchFloor} from "../../reduxComponents/actions";
 
 
 export class FloorSchedule extends Component {
-    static displayName = FloorSchedule.name;
+
+    componentDidMount() {
+        const {dispatch, match: {params: floorId}} = this.props;
+        dispatch(fetchFloor(floorId));
+
+        console.log("ComponentDidMount Result is ", this.props);
+    }
 
     state = {
         classes: []
@@ -127,3 +134,4 @@ export class FloorSchedule extends Component {
 //         }
 //     ]
 // };
+

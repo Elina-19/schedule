@@ -1,40 +1,21 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+
 import './CurrentClass.css';
-import Service from '../../httpRequest/schedule';
+import {fetchAudience} from "../../reduxComponents/actions";
 
 export class CurrentClass extends Component {
 
-    static displayName = CurrentClass.name;
+    componentDidMount() {
+        const {dispatch, match: {params: audienceId}} = this.props;
+        dispatch(fetchAudience(audienceId));
 
-    service = new Service();
-
-    state = {
-        currentClass: {}
-    };
-
-    constructor() {
-        super();
-        this.updateClass("");
+        console.log("ComponentDidMount Result is ", this.props);
     }
-
-    onClassLoaded = (currentClass) => {
-        this.setState({currentClass});
-    };
-
-    updateClass(index) {
-        const id = this.service._extractClass(window.location.href) + index;
-        this.service
-            .getClass(id)
-            .then(this.onClassLoaded);
-    }
-    
-    
 
     render() {
-
-
-
-
+        const {isFetching} = this.props.status;
+        const {classData} = this.props.currentClass;
 
         return (
             <div className="currentClassDiscipline">
@@ -64,3 +45,7 @@ export class CurrentClass extends Component {
         );
     }
 }
+
+const mapStateToProps = ({currentClass, status}) => {return {currentClass, status}};
+
+export default connect(mapStateToProps)(CurrentClass)
