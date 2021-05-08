@@ -6,10 +6,11 @@ using Schedule.Models;
 using _Excel = Microsoft.Office.Interop.Excel;
 
 
-namespace mysheet
+namespace ExcelParser
 {
     internal class Excel
     {
+        private static int id = 0;
         private readonly _Excel._Application excel = new _Excel.Application();
         private string path = "";
         private _Excel.Range Rng;
@@ -29,7 +30,7 @@ namespace mysheet
         {
             if (((_Excel.Range) ws.Cells[i, j]).Value2 != null)
                 return (string) ((_Excel.Range) ws.Cells[i, j]).Value2;
-            return "empty";
+            return "NULL.";
         }
 
         //Прочитать всю строку в столбце
@@ -41,90 +42,77 @@ namespace mysheet
             {
                 // Читаем строку в ячейке и проверяем находится ли она в объединение
                 var str = readCell(row, i);
-                if (!str.Equals("empty"))
+                if (!str.Equals("NULL."))
                 {
                     Rng = (_Excel.Range) ws.Cells[row, i];
-                    if (!str.Equals("empty"))
+                    if ((bool) Rng.MergeCells)
                     {
-                        if ((bool) Rng.MergeCells)
+                        var mergeArea = Rng.MergeArea.Count;
+                        // Содержит ли данная ячейка запятые
+                        //Если содержит, то создаёт массив уроков
+                        if (str.Contains(','))
                         {
-                            var mergeArea = Rng.MergeArea.Count;
-                            // Содержит ли данная ячейка запятые
-                            //Если содержит, то создаёт массив уроков
-                            if (str.Contains(','))
-                            {
-                                //TODO Для объединённой ячейки с несколькими уроками
-                                var listLessons = new List<Lesson>();
-                                string[] strings = str.Split(":");
-                            }
-                            else
-                            {
-                                //Если не содержит, то создаёт один объект урок и задает ему необходимые параметры
-                                var lesson = new Lesson();
-                                var strings = stringBetweenCapitalLetters(str);
-
-                                var groupsList = new List<string>();
-                                for (var a = column; a < column + mergeArea; a++) groupsList.Add(readCell(3, a));
-
-                                if (strings[0].Equals("Элективные курсы по физической культуре и спорту в "))
-                                {
-                                    lesson.Discipline = "Элективные курсы по физической культуре и спорту";
-                                    lesson.Teacher = "null";
-                                    lesson.Groups = groupsList;
-                                    var stringsForFizra = strings[2].Split(' ');
-                                    lesson.Time = stringsForFizra[1];
-                                    lesson.Id = 1;
-                                    for (var j = 0; j < lesson.Groups.Count(); j++)
-                                        Console.WriteLine(lesson.Groups.ToArray()[j]);
-                                    Console.WriteLine(lesson);
-                                }
-                                else
-                                {
-                                    int id;
-                                    var result = int.TryParse(strings[2], out id);
-                                    lesson.Id = id;
-                                    lesson.Time = timeForRow;
-                                    lesson.Discipline = strings[0];
-                                    lesson.Teacher = strings[1];
-                                    lesson.Groups = groupsList;
-                                    
-                                    writeToJsonFile(lesson);
-
-                                    //Для проверки корректности работы
-                                    //for (var j = 0; j < lesson.Groups.Count(); j++)
-                                    //    Console.WriteLine(lesson.Groups.ToArray()[j]);
-                                    //Console.WriteLine(lesson);
-                                }
-                            }
-
-                            //Пропускает следующие ячейки строки
-                            i = i + mergeArea - 1;
+                            Console.WriteLine("Не могу");
                         }
-                        //Если ячейка не объединенная
                         else
                         {
+                            //Если не содержит, то создаёт один объект урок и задает ему необходимые параметры
                             var lesson = new Lesson();
                             var strings = stringBetweenCapitalLetters(str);
 
-                            if (strings[0].Equals("")) ;
-
                             var groupsList = new List<string>();
+                            for (var a = i; a < i + mergeArea; a++) groupsList.Add(readCell(3, a));
 
-                            int id;
-                            var result = int.TryParse(strings[2], out id);
-                            lesson.Id = id;
-                            lesson.Time = timeForRow;
-                            lesson.Discipline = strings[0];
-                            lesson.Teacher = strings[1];
-                            lesson.Groups = new List<string> {str};
+                            if (strings[0].Equals("Элективные курсы по физической культуре и спорту в "))
+                            {
+                                lesson.Discipline = "Элективные курсы по физической культуре и спорту";
+                                lesson.Teacher = "null";
+                                lesson.Groups = groupsList;
+                                var stringsForFizra = strings[2].Split(' ');
+                                lesson.Time = stringsForFizra[1];
+                                lesson.Id = ++id;
+                                for (var j = 0; j < lesson.Groups.Count(); j++)
+                                    Console.WriteLine(lesson.Groups.ToArray()[j]);
+                                Console.WriteLine(lesson);
+                            }
+                            else
+                            {
+                                lesson.Id = ++id;
+                                lesson.Time = timeForRow;
+                                lesson.Discipline = strings[0];
+                                lesson.Teacher = strings[1];
+                                lesson.Groups = groupsList;
 
-                            writeToJsonFile(lesson);
+                                writeToJsonFile(lesson);
 
-                            //Для проверки корректности работы
-                            //for (var j = 0; j < lesson.Groups.Count(); j++)
-                            //    Console.WriteLine(lesson.Groups.ToArray()[j]);
-                            //Console.WriteLine(lesson);
+                                //Для проверки корректности работы
+                                //for (var j = 0; j < lesson.Groups.Count(); j++)
+                                //    Console.WriteLine(lesson.Groups.ToArray()[j]);
+                                //Console.WriteLine(lesson);
+                            }
                         }
+
+                        //Пропускает следующие ячейки строки
+                        i = i + mergeArea - 1;
+                    }
+                    //Если ячейка не объединенная
+                    else
+                    {
+                        var lesson = new Lesson();
+                        var strings = stringBetweenCapitalLetters(str);
+                        var groupsList = new List<string>();
+                        groupsList.Add(readCell(3, i));
+
+                        lesson.Id = ++id;
+                        lesson.Time = timeForRow;
+                        lesson.Discipline = strings[0];
+                        lesson.Teacher = strings[1];
+                        lesson.Groups = groupsList;
+
+                        //Для проверки корректности работы
+                        //for (var j = 0; j < lesson.Groups.Count(); j++)
+                        //    Console.WriteLine(lesson.Groups.ToArray()[j]);
+                        //Console.WriteLine(lesson);
                     }
                 }
             }
@@ -133,8 +121,9 @@ namespace mysheet
         //Получение 3 строк: Названия предмета, ФИО учителя, Остальное
         public string[] stringBetweenCapitalLetters(string str)
         {
-            var stringWithoutBrackets = Regex.Replace(str, @"\(.*?\)", "");
-            var ints = new List<int>();
+            str = Regex.Replace(str, @"\(.*?\)", "");
+            List<int> ints = new List<int>();
+
             for (var i = 1; i < str.Length; i++)
                 if (char.IsUpper(str[i]))
                 {
@@ -165,6 +154,7 @@ namespace mysheet
                 }
 
             var strings = new string[3];
+
             strings[0] = str.Substring(0, ints[0]);
             strings[1] = str.Substring(ints[0], ints[3] - ints[0]);
             strings[2] = str.Substring(ints[3]);
@@ -177,13 +167,13 @@ namespace mysheet
         public string findId(string str)
         {
             str = str + " ";
-            for (int i = 0; i < str.Length-3; i++)
+            for (int i = 0; i < str.Length - 3; i++)
             {
                 char c1 = str[i];
                 if (Char.IsDigit(c1))
                 {
                     int j = i;
-                    for (; j < i+4; j++)
+                    for (; j < i + 4; j++)
                     {
                         char c2 = str[j];
                         if (!Char.IsDigit(c2))
@@ -199,7 +189,7 @@ namespace mysheet
                     }
 
                     j = i;
-                    for (; j < i+3; j++)
+                    for (; j < i + 3; j++)
                     {
                         char c2 = str[j];
                         if (!Char.IsDigit(c2))
@@ -207,6 +197,7 @@ namespace mysheet
                             break;
                         }
                     }
+
                     if (j == i + 2)
                     {
                         str = str.Substring(i, 3);
