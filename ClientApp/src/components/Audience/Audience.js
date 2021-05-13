@@ -16,7 +16,7 @@ export default class Audience extends Component {
                 <StatusBar/>
                 <CurrentClass/>
                 <SwitchDay/>
-                <DailySchedule/>
+               
             </Layout>
         );
     }

@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 export class DailySchedule extends Component {
     static displayName = DailySchedule.name;
 
-    componentDidMount() {
+    /*componentDidMount() {
         const {dispatch, match:{params: audienceId}} = this.props;
         dispatch(fetchAudience(audienceId));
     }
@@ -34,22 +34,23 @@ export class DailySchedule extends Component {
             .getAllClasses(id)
             .then(this.onClassLoaded);
     }
+    */
 
     render() {
-        const {isFetching} = this.props.status;
-        const {classData} = this.props.ourClass;
 
-        const content = this.state.classes.map(
+        const { classes } = this.props;
+        /*
+        const content = classes.map(
             (ourClass, index) =>
                 <tr key={index}>
-                    <th>{index+1}</th>
+                    <th>{index + 1}</th>
                     <th>{ourClass.time}</th>
                     <th>{ourClass.groups}</th>
                     <th>{ourClass.name}</th>
                     <th>{ourClass.teacher}</th>
                 </tr>
-        );
-
+        )
+        */
         return (
             <table className="tableR">
                 <thead>
@@ -62,7 +63,7 @@ export class DailySchedule extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                {content}
+               
                 </tbody>
             </table>
         );

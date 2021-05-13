@@ -18,6 +18,7 @@ export const RECEIVE_AUDIENCE = 'RECEIVE_AUDIENCE';
 
 export const RECEIVE_FLOORS = 'RECEIVE_FLOORS';
 export const RECEIVE_FLOOR = 'RECEIVE_FLOOR';
+export const RECEIVE_DAILY_SCHEDULE = 'RECEIVE_DAILY_SCHEDULE';
 
 const scheduleService = new Schedule();
 
@@ -45,7 +46,7 @@ function handleError() {
 function receiveAudience(audience) {
     return {
         type: RECEIVE_AUDIENCE,
-        post: audience
+        audience: audience
     }
 }
 
@@ -53,6 +54,13 @@ function receiveFloor(floor){
     return {
         type: RECEIVE_FLOOR,
         floor: floor
+    }
+}
+
+function receiveDailySchedule(dailySchedule){
+    return {
+        type: RECEIVE_DAILY_SCHEDULE,
+        dailySchedule: dailySchedule
     }
 }
 
@@ -122,15 +130,27 @@ export function fetchAudience(audienceId) {
 
         const audience = response(scheduleService.getClass(audienceId), dispatch);
         // TODO - заменить на свойства аудитории
-        return audience.then(post => {
-            const mappedPost = {
+        return audience.then(audience => {
+            const mappedAudience = {
                 number:audience.data.audience.number,
                 time: audience.data.audience.time,
                 groups: audience.data.audience.groups,
                 name: audience.data.audience.name,
                 teacher: audience.data.audience.teacher
             };
-            dispatch(receiveAudience(mappedPost));
+            //dispatch(receiveAudience(audience)); В schedule уже происходит разбиение на пропсы?
+            dispatch(receiveAudience(mappedAudience));
+        });
+    }
+}
+
+export function fetchDailySchedule(dailyScheduleId) {
+    return function (dispatch) {
+
+        const dailySchedule = response(scheduleService.getAllClasses(dailyScheduleId), dispatch);
+        // TODO - заменить на свойства аудитории
+        return dailySchedule.then(dailySchedule => {
+            dispatch(receiveDailySchedule(dailySchedule));//тоже готовые данные?
         });
     }
 }
