@@ -12,7 +12,8 @@ export class CurrentClass extends Component {
 
     render() {
 
-        const { number, name, groups, teacher, time } = this.props;
+        const { currentClass } = this.props;
+        const { number, name, groups, teacher, time } = currentClass;
 
         return (
             <div className="currentClassDiscipline">

@@ -8,44 +8,24 @@ import CurrentClass from "../components/CurrentClass/CurrentClass";
 class CurrentClassContainer extends Component {
 
     componentDidMount() {
-        this.getAudience();
+        const { dispatch, match: { params: audienceId } } = this.props;
+        dispatch(fetchAudience(audienceId.audienceId));
     }
-
-    getAudience = (audienceId) => {
-        const { fetchAudience } = this.props;
-        fetchAudience(audienceId);
-    };
 
     render() {
         const { isFetching } = this.props.status;
-        const { number, name, groups, teacher, time } = this.props;
+        const { currentClass } = this.props.currentClassData;
 
-        return <CurrentClass number={number}
-            name={name}
-            groups={groups}
-            teacher={teacher}
-            time={time}
-            isFetching={isFetching}
-            onPageChange={this.getAudience} />
+        return <CurrentClass currentClass={currentClass} />
     }
 }
 
-const mapStateToProps = ({ number, name, groups, teacher, time, status }) => {
+const mapStateToProps = ({ currentClassData, status }) => {
 
     return {
-        number,
-        name,
-        groups,
-        teacher,
-        time,
+        currentClassData,
         status
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({
-        fetchAudience
-    }, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CurrentClassContainer)
+export default connect(mapStateToProps)(CurrentClassContainer)

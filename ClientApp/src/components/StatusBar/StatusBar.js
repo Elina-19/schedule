@@ -39,7 +39,6 @@ export class StatusBar extends Component {
                     <div className="statusBarTime"> {this.state.currentDate.getTime()} </div>
                     <div className="statusBarDays">
                         <div>{this.state.currentDate.getCurrentDayOfWeek()}</div>
-                        <div>{this.state.currentDate.getCurrentDayOfWeek()}</div>
                     </div>
                 </div>
                 <div className="statusBarWeek"> нечетная неделя</div>

@@ -1,4 +1,4 @@
-import * as actions from '../actions/actions';
+import * as Actions from '../actions/actions';
 
 const dailyScheduleState = {
     classes: [],
@@ -7,10 +7,10 @@ const dailyScheduleState = {
 function dailyScheduleReducer(state = dailyScheduleState, action) {
 
     switch (action.type) {
-        case actions.INCREMENT_DAILY_SCHEDULE:
+        case Actions.INCREMENT_DAILY_SCHEDULE:
             return {...state, classes: action.classes };
 
-        case actions.DECREMENT_DAILY_SCHEDULE:
+        case Actions.DECREMENT_DAILY_SCHEDULE:
             return {...state, classes: action.classes };
 
         default:
