@@ -132,14 +132,12 @@ export function fetchAudience(audienceId) {
         // TODO - заменить на свойства аудитории
         return audience.then(audience => {
             const mappedAudience = {
-                id: audience.audiences.data.id,
                 number: audience.number,
                 name: audience.name,
                 groups: audience.groups,
                 teacher: audience.teacher,
                 time: audience.time
             };
-            //dispatch(receiveAudience(audience)); //В schedule уже происходит разбиение на пропсы?
             dispatch(receiveAudience(mappedAudience));
         });
     }

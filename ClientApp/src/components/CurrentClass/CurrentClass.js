@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import './CurrentClass.css';
-import {fetchAudience} from "../../actions/actions";
 
 export class CurrentClass extends Component {
 
@@ -13,6 +12,7 @@ export class CurrentClass extends Component {
     render() {
 
         const { currentClass } = this.props;
+       
         const { number, name, groups, teacher, time } = currentClass;
 
         return (

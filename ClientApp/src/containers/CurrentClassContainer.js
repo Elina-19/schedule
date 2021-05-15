@@ -2,7 +2,6 @@
 import { connect } from "react-redux";
 
 import { fetchAudience } from "../actions/actions";
-import { bindActionCreators } from "redux";
 import CurrentClass from "../components/CurrentClass/CurrentClass";
 
 class CurrentClassContainer extends Component {
@@ -25,7 +24,7 @@ const mapStateToProps = ({ currentClassData, status }) => {
     return {
         currentClassData,
         status
-    }
+    };
 };
 
 export default connect(mapStateToProps)(CurrentClassContainer)

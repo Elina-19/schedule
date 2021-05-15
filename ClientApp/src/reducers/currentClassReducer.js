@@ -10,7 +10,7 @@ function currentClassData(state = currentClassState, action) {
         case Actions.RECEIVE_AUDIENCE:
             return {
                 ...state,
-                currentClass: action.currentClass
+                currentClass: action.audience
             };
         default:
             return state;
