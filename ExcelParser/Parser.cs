@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using ExcelDataReader;
 using Schedule.Models;
 
@@ -56,12 +57,12 @@ namespace ExcelParser
                     Console.WriteLine(cells[6, 17]);
                     
                     //пример работы парсинга объединённой ячейки
-                    if (cells[3, 3].Contains(','))
+                    if (cells[3, 1].Contains(','))
                     {
                         int id = 0;
                         List<Lesson> lessons = new List<Lesson>();
                         List<Audience> audiences = new List<Audience>();
-                        string[] strLessons = cells[3, 3].Split(',');
+                        string[] strLessons = cells[3, 1].Split(',');
                         for (int j = 0; j < strLessons.Length; j++)
                         {
                             var lesson = new Lesson();
@@ -103,6 +104,7 @@ namespace ExcelParser
 
                         lessons[0].Teacher = teacher;
                         audiences[0].Number = Int32.Parse(number);
+                        audiences[0].Floor = number.Substring(0, 2);
                         for (int j = 1; j < strLessons.Length; j++)
                         {
                             teacher = "";
@@ -124,8 +126,23 @@ namespace ExcelParser
                             lessons[j].Teacher = teacher;
                             if (!number.Equals(""))
                             {
-                                audiences[j].Number = Int32.Parse(number);   
+                                audiences[j].Number = Int32.Parse(number); 
+                                audiences[j].Floor = number.Substring(0, 2);
                             }
+                        }
+
+                        List<string> groups = new List<string>();
+                        groups.Add(cells[0, 1]);
+                        int t = 2;
+                        while (cells[3, 1].Equals(cells[3, t]))
+                        {
+                            groups.Add(cells[0, t]);
+                            t++;
+                        }
+
+                        for (int j = 0; j < lessons.Count; j++)
+                        {
+                            lessons[j].Groups = groups;
                         }
 
                         for (int j = 0; j < lessons.Count; j++)
@@ -133,6 +150,15 @@ namespace ExcelParser
                             Console.WriteLine(lessons[j].Discipline);
                             Console.WriteLine(lessons[j].Teacher);
                             Console.WriteLine(lessons[j].Time);
+                            for (int k = 0; k < lessons[j].Groups.Count(); k++)
+                            {
+                                Console.WriteLine(lessons[j].Groups.ToArray()[k]);
+                            }
+                        }
+                        for (int j = 0; j < audiences.Count; j++)
+                        {
+                            Console.WriteLine(audiences[j].Number);
+                            Console.WriteLine(audiences[j].Floor);
                         }
                     }
                 }
