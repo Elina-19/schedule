@@ -16,6 +16,7 @@ namespace ExcelParser
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
+                    // Прочитывание ячеек и запись в двумерный массив
                     for (int i = 0; i < 2; i++)
                     {
                         reader.Read();   
@@ -29,6 +30,7 @@ namespace ExcelParser
                         }
                     }
 
+                    // Решение проблемы с объединёнными ячейками
                     CellRange[] cellRange = reader.MergeCells;
                     for (int i = 0; i < cellRange.Length; i++)
                     {
