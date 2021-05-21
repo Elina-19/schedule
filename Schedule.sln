@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schedule", "Schedule.csproj", "{96CCA40B-3F7D-4248-85B2-679CBFFE0617}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleSheetParser", "GoogleSheetParser\GoogleSheetParser.csproj", "{77794E9B-9F39-4608-8984-496C21E7C765}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelParser", "ExcelParser\ExcelParser.csproj", "{EBE9D844-8F0E-4703-B885-99898E336548}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{96CCA40B-3F7D-4248-85B2-679CBFFE0617}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96CCA40B-3F7D-4248-85B2-679CBFFE0617}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96CCA40B-3F7D-4248-85B2-679CBFFE0617}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77794E9B-9F39-4608-8984-496C21E7C765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77794E9B-9F39-4608-8984-496C21E7C765}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77794E9B-9F39-4608-8984-496C21E7C765}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77794E9B-9F39-4608-8984-496C21E7C765}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EBE9D844-8F0E-4703-B885-99898E336548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EBE9D844-8F0E-4703-B885-99898E336548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBE9D844-8F0E-4703-B885-99898E336548}.Release|Any CPU.ActiveCfg = Release|Any CPU
