@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 using ExcelDataReader;
 using Schedule.Models;
@@ -15,17 +13,17 @@ namespace ExcelParser
         static List<Floor> floors = new List<Floor>();
         static List<Audience> audiences = new List<Audience>();
 
-        void Parsing(string path)
+        public void parsing(string path)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-// Открывает excel файл по указаному path
+            // Открывает excel файл по указаному path
             string[,] cells = new string[43, 50];
             using (var stream = File.Open(@path,
                 FileMode.Open, FileAccess.Read))
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
-// Прочитывание ячеек и запись в двумерный массив
+                    // Прочитывание ячеек и запись в двумерный массив
                     for (int i = 0; i < 2; i++)
                     {
                         reader.Read();
@@ -40,7 +38,7 @@ namespace ExcelParser
                         }
                     }
 
-// Решение проблемы с объединёнными ячейками
+                    // Решение проблемы с объединёнными ячейками
                     CellRange[] cellRange = reader.MergeCells;
                     for (int i = 0; i < cellRange.Length; i++)
                     {
@@ -58,7 +56,7 @@ namespace ExcelParser
                     }
 
 
-//Чтение таблицы
+                    //Чтение таблицы
                     for (int row = 1; row < 43; row++)
                     {
                         var timeForRow = cells[row, 0];
@@ -66,7 +64,7 @@ namespace ExcelParser
                         for (int column = 1; column < 50; column++)
                         {
                             id++;
-// Читаем строку в ячейке и проверяем находится ли она в объединение
+                            // Читаем строку в ячейке и проверяем находится ли она в объединение
                             var str = cells[row, column];
                             if (str == null || str.Equals(" "))
                             {
@@ -91,9 +89,9 @@ namespace ExcelParser
                                         groupsList.Add(cells[0, column + w]);
                                     }
 
-// Содержит ли данная ячейка запятые
+                                    // Содержит ли данная ячейка запятые
                                     bool isHave = false;
-
+                                    
                                     if (str.Contains(","))
                                     {
                                         string[] strsss = str.Split(',');
@@ -103,9 +101,7 @@ namespace ExcelParser
                                             {
                                                 isHave = true;
                                                 break;
-                                            }
-
-                                            ;
+                                            };
                                         }
                                     }
 
@@ -119,11 +115,10 @@ namespace ExcelParser
                                                 if (str[i].Equals(':'))
                                                 {
                                                     stringsBeforeAndAfterColon[0] = str.Substring(0, i);
-                                                    stringsBeforeAndAfterColon[1] = str.Substring(i + 1);
+                                                    stringsBeforeAndAfterColon[1] = str.Substring(i+1);
                                                     break;
                                                 }
                                             }
-
                                             if (stringsBeforeAndAfterColon[1][0].Equals(' '))
                                             {
                                                 stringsBeforeAndAfterColon[1] =
@@ -133,17 +128,14 @@ namespace ExcelParser
                                             string[] strings = stringsBeforeAndAfterColon[1].Split(',');
                                             for (int j = 0; j < strings.Length; j++)
                                             {
-                                                if (strings[j].Equals(" "))
+                                                if (strings[j].Equals("    "))
                                                 {
                                                     continue;
                                                 }
-
                                                 if (strings[j][0].Equals(' '))
                                                 {
                                                     strings[j] = strings[j].Substring(1);
                                                 }
-
-                                                Console.WriteLine(strings[j]);
 
                                                 Lesson lesson = new Lesson();
                                                 bool isHaveNameOfDisc = false;
@@ -166,17 +158,14 @@ namespace ExcelParser
                                                 {
                                                     stringsWithNames =
                                                         stringBetweenCapitalLetters(strings[j]);
-                                                    lesson.Discipline = stringsBeforeAndAfterColon[0] + ": " +
-                                                                        stringsWithNames[0];
+                                                    lesson.Discipline = stringsBeforeAndAfterColon[0] + ": " + stringsWithNames[0];
                                                 }
                                                 else
                                                 {
                                                     stringsWithNames =
-                                                        stringBetweenCapitalLetters(stringsBeforeAndAfterColon[0] +
-                                                            strings[j]);
+                                                        stringBetweenCapitalLetters(stringsBeforeAndAfterColon[0] + strings[j]);
                                                     lesson.Discipline = stringsWithNames[0];
                                                 }
-
                                                 lesson.Id = id;
                                                 lesson.Time = timeForRow;
                                                 lesson.Teacher = stringsWithNames[1];
@@ -189,9 +178,9 @@ namespace ExcelParser
                                     }
                                     else
                                     {
-//Если не содержит, то создаёт один объект урок и задает ему необходимые параметры
+                                        //Если не содержит, то создаёт один объект урок и задает ему необходимые параметры
 
-//Шоб не ломалось
+                                        //Шоб не ломалось
                                         if (str.Contains("Проектный практикум (9н.) зач.с оц."))
                                         {
                                             var lesson = new Lesson();
@@ -225,7 +214,7 @@ namespace ExcelParser
 
                                             var strings = stringBetweenCapitalLetters(str);
 
-//Шоб не ломалось
+                                            //Шоб не ломалось
                                             if (strings[0]
                                                 .Equals("Элективные курсы по физической культуре и спорту в "))
                                             {
@@ -261,12 +250,12 @@ namespace ExcelParser
                                     }
 
 
-//Пропускает следующие ячейки строки
+                                    //Пропускает следующие ячейки строки
                                     column = column + mergeArea - 1;
                                     id = id + mergeArea - 1;
                                 }
 
-//Если ячейка не объединенная
+                                //Если ячейка не объединенная
                                 else
                                 {
                                     string strBefore = "";
@@ -345,7 +334,7 @@ namespace ExcelParser
             }
         }
 
-        public static void addToAudienceList(string str, Lesson lesson)
+        public void addToAudienceList(string str, Lesson lesson)
         {
             Regex regex = new Regex(@"\d{4}");
             if (regex.IsMatch(str))
@@ -367,12 +356,12 @@ namespace ExcelParser
                 if (!isHave)
                 {
                     var audience = new Audience();
-                    audience.Number = number;
-                    audience.Floor = (number / 100).ToString();
-                    var lessonList = new List<Lesson>();
-                    lessonList.Add(lesson);
-                    audience.Lessons = lessonList;
-                    audiences.Add(audience);
+                        audience.Number = number;
+                        audience.Floor = (number / 100).ToString();
+                        var lessonList = new List<Lesson>();
+                        lessonList.Add(lesson);
+                        audience.Lessons = lessonList;
+                        audiences.Add(audience);
                 }
             }
             else
@@ -408,10 +397,10 @@ namespace ExcelParser
             }
         }
 
-//Получение 3 строк: Названия предмета, ФИО учителя, Остальное
-        public static string[] stringBetweenCapitalLetters(string str)
+        //Получение 3 строк: Названия предмета, ФИО учителя, Остальное
+        public string[] stringBetweenCapitalLetters(string str)
         {
-//Убрать текст между скобками
+            //Убрать текст между скобками
             str = Regex.Replace(str, @"\(.*?\)", "");
             List<int> ints = new List<int>();
             bool isHavePatronymic = false;

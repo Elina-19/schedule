@@ -37,6 +37,9 @@
     <_ContentIncludedByDefault Remove="ExcelParser\obj\ExcelParser.csproj.nuget.dgspec.json" />
     <_ContentIncludedByDefault Remove="ExcelParser\obj\project.assets.json" />
     <_ContentIncludedByDefault Remove="ExcelParser\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="GoogleSheetParser\obj\GoogleSheetParser.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="GoogleSheetParser\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="GoogleSheetParser\obj\project.packagespec.json" />
   </ItemGroup>
 
   <ItemGroup>
