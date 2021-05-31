@@ -63,7 +63,6 @@ namespace ExcelParser
 
                         for (int column = 1; column < 50; column++)
                         {
-                            id++;
                             // Читаем строку в ячейке и проверяем находится ли она в объединение
                             var str = cells[row, column];
                             if (str == null || str.Equals(" "))
@@ -109,14 +108,14 @@ namespace ExcelParser
                                     {
                                         if (str.Contains(":"))
                                         {
-                                            string[] stringsBeforeAndAfterColon = new string[2];
+                                            string[] stringsBeforeAndAfterColon = new string[3];
                                             for (int i = 0; i < str.Length; i++)
                                             {
                                                 if (str[i].Equals(':'))
                                                 {
                                                     stringsBeforeAndAfterColon[0] = str.Substring(0, i);
                                                     stringsBeforeAndAfterColon[1] = str.Substring(i+1);
-                                                    break;
+                                                        break;
                                                 }
                                             }
                                             if (stringsBeforeAndAfterColon[1][0].Equals(' '))
@@ -135,6 +134,26 @@ namespace ExcelParser
                                                 if (strings[j][0].Equals(' '))
                                                 {
                                                     strings[j] = strings[j].Substring(1);
+                                                }
+                                                if (strings[j].Contains("  Дисциплина по выбору:"))
+                                                {
+                                                    string[] tempStrings = strings[j]
+                                                        .Split("  Дисциплина по выбору:");
+                                                    string str1 = tempStrings[0];
+                                                    string str2 = tempStrings[1];
+                                                    j--;
+                                                    strings[j] = str1;
+                                                    strings[j + 1] = str2;
+                                                }
+                                                if (strings[j].Contains("  Дисциплина по выбору :"))
+                                                {
+                                                    string[] tempStrings = strings[j]
+                                                        .Split("  Дисциплина по выбору :");
+                                                    string str1 = tempStrings[0];
+                                                    string str2 = tempStrings[1];
+                                                    j--;
+                                                    strings[j] = str1;
+                                                    strings[j + 1] = str2;
                                                 }
 
                                                 Lesson lesson = new Lesson();
@@ -167,6 +186,7 @@ namespace ExcelParser
                                                     lesson.Discipline = stringsWithNames[0];
                                                 }
                                                 lesson.Id = id;
+                                                id++;
                                                 lesson.Time = timeForRow;
                                                 lesson.Teacher = stringsWithNames[1];
                                                 lesson.Groups = groupsList;
@@ -189,6 +209,7 @@ namespace ExcelParser
                                             lesson.Groups = groupsList;
                                             lesson.Teacher = "empty";
                                             lesson.Id = id;
+                                            id++;
 
                                             lessons.Add(lesson);
                                         }
@@ -224,12 +245,14 @@ namespace ExcelParser
                                                 lesson.Groups = groupsList;
                                                 lesson.Time = timeForRow;
                                                 lesson.Id = id;
+                                                id++;
 
                                                 lessons.Add(lesson);
                                             }
                                             else
                                             {
                                                 lesson.Id = id;
+                                                id++;
                                                 lesson.Time = timeForRow;
                                                 if (isContain)
                                                 {
@@ -252,7 +275,6 @@ namespace ExcelParser
 
                                     //Пропускает следующие ячейки строки
                                     column = column + mergeArea - 1;
-                                    id = id + mergeArea - 1;
                                 }
 
                                 //Если ячейка не объединенная
@@ -281,6 +303,7 @@ namespace ExcelParser
                                     groupsList.Add(cells[0, column]);
 
                                     lesson.Id = id;
+                                    id++;
                                     lesson.Time = timeForRow;
                                     if (isContain)
                                     {
@@ -441,7 +464,7 @@ namespace ExcelParser
                                     ints.Add(j);
                                     for (int k = j; k < str.Length; k++)
                                     {
-                                        if (str[k].Equals(' '))
+                                        if (str[k].Equals(' ') && k < str.Length - 1 && !char.IsUpper(str[k + 1]))
                                         {
                                             ints.Add(k);
                                         }
@@ -472,7 +495,7 @@ namespace ExcelParser
             {
                 if (isHavePatronymic)
                 {
-                    strings[0] = str.Substring(0, ints[0]);
+                    strings[0] = str.Substring(0, ints[0]).Trim();
                     strings[1] = str.Substring(ints[0], ints[3] - ints[0]);
                     strings[2] = str.Substring(ints[3]);
                 }
