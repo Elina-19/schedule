@@ -723,5 +723,17 @@ namespace ExcelParser
 
                 return false;
             }
+            
+            public void printLessons()
+            {
+                for (int i = 0; i < lessons.Count; i++)
+                {
+                    Console.WriteLine("id = " + lessons[i].Id);
+                    Console.WriteLine("discipline = " + lessons[i].Discipline);
+                    Console.WriteLine("teacher = " + lessons[i].Teacher);
+                    Console.WriteLine("time = " + lessons[i].Time);
+                    Console.WriteLine("___________");
+                }
+            }
     }
 }
