@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using ExcelDataReader;
+using Newtonsoft.Json;
 using Schedule.Models;
 
 namespace ExcelParser
@@ -487,6 +488,7 @@ namespace ExcelParser
                         floors.Add(floor);
                     }
                 }
+                WriteToJson(lessons, floors, audiences);
             }
 
             public void addToAudienceList(string str, Lesson lesson, int row)
@@ -724,6 +726,16 @@ namespace ExcelParser
                 return false;
             }
             
+            private static void WriteToJson(List<Lesson> lessons, List<Floor> floors, List<Audience> audiences)
+            {
+                File.WriteAllText(@"resultLessons.json", JsonConvert.SerializeObject(lessons,
+                    Newtonsoft.Json.Formatting.Indented));
+                File.WriteAllText(@"resultFloors.json", JsonConvert.SerializeObject(floors,
+                    Newtonsoft.Json.Formatting.Indented));
+                File.WriteAllText(@"resultAudiences.json", JsonConvert.SerializeObject(audiences,
+                    Newtonsoft.Json.Formatting.Indented));
+            }
+
             public void printLessons()
             {
                 for (int i = 0; i < lessons.Count; i++)
