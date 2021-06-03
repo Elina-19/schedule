@@ -108,7 +108,7 @@ function decrementSwitchDay(currentDate) {
 }
 
 
-export function fetchFloor(floorId) {
+/*export function fetchFloor(floorId) {
     return function (dispatch) {
         // TODO - добавить в сервис метод для запроса инфы по этажу
         const floor = response(scheduleService.getClass(floorId), dispatch);
@@ -123,30 +123,21 @@ export function fetchFloor(floorId) {
             dispatch(receiveFloor(mappedFloor))
         });
     }
-}
+}*/
 
 
 export function fetchAudience(audienceId) {
     return function (dispatch) {
 
-        const audience = response(scheduleService.getClass(audienceId), dispatch);
+        const audience = response(scheduleService.getAudience(audienceId), dispatch);
         
         return audience.then(audience => {
-
-            const mappedAudience = {
-                
-                number: audience.number,
-                name: audience.name,
-                groups: audience.groups,
-                teacher: audience.teacher,
-                time: audience.time
-            };
-            dispatch(receiveAudience(mappedAudience));
+            dispatch(receiveAudience(audience));
         });
     }
 }
 
-export function fetchDailySchedule(dailyScheduleId) {
+/*export function fetchDailySchedule(dailyScheduleId) {
     return function (dispatch) {
         const dailySchedule = response(scheduleService.getAllClasses(dailyScheduleId), dispatch);
         // TODO - заменить на свойства аудитории
@@ -157,7 +148,7 @@ export function fetchDailySchedule(dailyScheduleId) {
         
 
     }
-}
+}*/
 
 /*
 * Helper functions

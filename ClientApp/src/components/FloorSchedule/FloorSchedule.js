@@ -1,3 +1,4 @@
+/*
 import React, {Component} from 'react';
 import '../DailySchedule/DailySchedule.css';
 import Service from '../../httpRequest/schedule';
@@ -143,3 +144,4 @@ export default connect(mapStateToProps)(FloorSchedule)
 //     ]
 // };
 
+*/

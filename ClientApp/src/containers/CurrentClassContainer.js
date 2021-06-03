@@ -1,4 +1,5 @@
-﻿import React, {Component} from 'react';
+﻿/*
+import React, {Component} from 'react';
 import { connect } from "react-redux";
 
 import { fetchAudience } from "../actions/actions";
@@ -41,4 +42,4 @@ const mapDispatchToProps = (dispatch) => {
     }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CurrentClassContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentClassContainer)*/

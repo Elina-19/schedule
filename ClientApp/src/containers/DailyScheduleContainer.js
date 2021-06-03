@@ -1,4 +1,5 @@
-﻿import React, {Component} from 'react';
+﻿/*
+import React, {Component} from 'react';
 import { connect } from "react-redux";
 
 import { fetchDailySchedule } from "../actions/actions";
@@ -41,4 +42,4 @@ const mapDispatchToProps = (dispatch) => {
     }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DailyScheduleContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(DailyScheduleContainer)*/

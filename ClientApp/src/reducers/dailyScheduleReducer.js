@@ -1,3 +1,4 @@
+/*
 import * as Actions from '../actions/actions';
 
 const dailyScheduleState = {
@@ -14,4 +15,4 @@ function dailyScheduleReducer(state = dailyScheduleState, action) {
     }
 }
 
-export default dailyScheduleReducer;
+export default dailyScheduleReducer;*/
