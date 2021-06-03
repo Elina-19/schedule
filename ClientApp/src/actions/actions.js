@@ -148,7 +148,7 @@ export function fetchAudience(audienceId) {
 
 export function fetchDailySchedule(dailyScheduleId) {
     return function (dispatch) {
-
+        console.log(dailyScheduleId)
         const dailySchedule = response(scheduleService.getAllClasses(dailyScheduleId), dispatch);
         // TODO - заменить на свойства аудитории
         return dailySchedule.then(dailySchedule => {

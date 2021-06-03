@@ -5,6 +5,8 @@ import {DailySchedule} from '../DailySchedule/DailySchedule';
 import {SwitchDay} from '../SwitchDay/SwitchDay';
 import CurrentClassContainer from "../../containers/CurrentClassContainer";
 
+import DailyScheduleContainer from "../../containers/DailyScheduleContainer";
+
 export default class Audience extends Component {
 
     static displayName = Audience.name;
@@ -14,7 +16,7 @@ export default class Audience extends Component {
             const idRegExp = /\/([0-9]*)\/$/;
             return window.location.href.match(idRegExp)[1];
         } catch (error) {
-            return 2;
+            return 1301;
         }
     }
     
@@ -25,7 +27,7 @@ export default class Audience extends Component {
                 <StatusBar />
                 <CurrentClassContainer audienceId={ this.transformClass()} />
                 <SwitchDay />
-                <DailySchedule dailyScheduleId={ this.transformClass()}/>
+                <DailyScheduleContainer dailyScheduleId={ this.transformClass()}/>
             </Layout>
         );
     }

@@ -1,9 +1,9 @@
-﻿import React from 'react';
+﻿import React, {Component} from 'react';
 import { connect } from "react-redux";
 
 import { fetchDailySchedule } from "../actions/actions";
 import { bindActionCreators } from "redux";
-import DailySchedule from "../components/DailySchedule/DailySchedule";
+import {DailySchedule} from "../components/DailySchedule/DailySchedule";
 
 class DailyScheduleContainer extends Component {
 
@@ -41,7 +41,7 @@ const mapStateToProps = ({ classes, status }) => {
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        fetchAudience
+        fetchDailySchedule
     }, dispatch);
 };
 
