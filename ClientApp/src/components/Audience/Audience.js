@@ -9,14 +9,23 @@ export default class Audience extends Component {
 
     static displayName = Audience.name;
 
+    transformClass(){
+        try {
+            const idRegExp = /\/([0-9]*)\/$/;
+            return window.location.href.match(idRegExp)[1];
+        } catch (error) {
+            return 2;
+        }
+    }
+    
     render() {
         return (
 
             <Layout className="allPage">
                 <StatusBar />
-                <CurrentClassContainer audienceId={ 1201} />
+                <CurrentClassContainer audienceId={ this.transformClass()} />
                 <SwitchDay />
-                <DailySchedule dailyScheduleId={ 1201}/>
+                <DailySchedule dailyScheduleId={ this.transformClass()}/>
             </Layout>
         );
     }

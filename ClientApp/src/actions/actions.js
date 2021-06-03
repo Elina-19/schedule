@@ -130,8 +130,11 @@ export function fetchAudience(audienceId) {
 
         const audience = response(scheduleService.getClass(audienceId), dispatch);
         // TODO - заменить на свойства аудитории
+
         return audience.then(audience => {
+
             const mappedAudience = {
+                
                 number: audience.number,
                 name: audience.name,
                 groups: audience.groups,
