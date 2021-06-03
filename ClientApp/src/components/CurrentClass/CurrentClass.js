@@ -6,28 +6,24 @@ export class CurrentClass extends Component {
     
     render() {
 
-        // const { currentClass } = this.props;
+        const { currentClass } = this.props;
        
-        // const { number, name, groups, teacher, time } = currentClass;
-
+        const { number, name, groups, teacher, time } = currentClass;
         return (
             <div className="currentClassDiscipline">
 
                 <div className="currentClassInfo">
                     <div className="currentClassNumber">
-                        9999
+                        {number}
                     </div>
-                    <div  className="currentClassName">Foo</div>
+                    <div  className="currentClassName">{name}</div>
                     
-                    {/*{console.log(Array.isArray(groups))}*/}
-                    {/*{console.log(groups)}*/}
-
-                    <div  className="currentClassGroups">11-022</div>
-                    <div className="currentClassTeacher">Lorem Ipsum</div>
+                    <div  className="currentClassGroups">{groups}</div>
+                    <div className="currentClassTeacher">{teacher}</div>
                 </div>
                 <div className="currentClassTimes">
                 <div className="currentClassTime">
-                    23:59:59
+                    {time}
                 </div>
                     <img className="currentClassTimeRange" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAAALCAYAAAAKqNOlAAAAaklEQVRoQ+3TsRGAMAwEQatIGJFRgxpyqVCEP1zn/mBHVz39Lo8AgSOBuuf5jhZ8JkBgCckREAgICCmAaIKAkNwAgYCAkAKIJggIyQ0QCAgIKYBogoCQ3ACBgICQAogmCNQ1vTEQIHAm8AMEiRZsJUT99AAAAABJRU5ErkJggg=="/>
                     <div className="currentClassStart">

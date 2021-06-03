@@ -3,31 +3,43 @@ import { connect } from "react-redux";
 
 import { fetchAudience } from "../actions/actions";
 import {CurrentClass} from "../components/CurrentClass/CurrentClass";
+import {bindActionCreators} from "redux";
 
 class CurrentClassContainer extends Component {
 
     componentDidMount() {
-        const { dispatch, audienceId } = this.props;
-        dispatch(fetchAudience(audienceId));
-        console.log(this.props);
+        const { fetchAudience, audienceId } = this.props;
+        fetchAudience(audienceId);
     }
 
     render() {
-        // const { isFetching } = this.props.status;
-        // const { currentClass } = this.props.currentClassData;
-
-        var currentClass = null;
+        console.log("Current class container", this.props);
+        const { isFetching } = this.props.status;
+        const { currentClass } = this.props.currentClass;
         
-        return <CurrentClass currentClass={currentClass} />
+        if (!isFetching){
+            if (currentClass != null)
+                return <CurrentClass currentClass={currentClass} />
+            else
+                return (<h2>Oops, page not found</h2>);
+        }
+        else
+            return (<h2>Hi</h2>);
     }
 }
 
-const mapStateToProps = ({ currentClassData, status }) => {
+const mapStateToProps = ({ currentClass, status }) => {
 
     return {
-        currentClassData,
+        currentClass,
         status
     };
 };
 
-export default connect(mapStateToProps)(CurrentClassContainer)
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        fetchAudience
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentClassContainer)
