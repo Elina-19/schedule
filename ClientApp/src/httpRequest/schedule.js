@@ -8,7 +8,7 @@ export default class Schedule {
         return this.request.getRequest(`${this._apiBase}/audience/${id}`)
             .then(audiences => {
                 return new Promise(resolve => {
-
+                    console.log(audiences);
                     setTimeout(() => {
                         resolve(audiences.data.lessons.map(this._transformAllClass));
                     }, 1000)

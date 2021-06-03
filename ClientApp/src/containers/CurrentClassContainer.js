@@ -1,20 +1,23 @@
-﻿import React from 'react';
+﻿import React, {Component} from 'react';
 import { connect } from "react-redux";
 
 import { fetchAudience } from "../actions/actions";
-import CurrentClass from "../components/CurrentClass/CurrentClass";
+import {CurrentClass} from "../components/CurrentClass/CurrentClass";
 
 class CurrentClassContainer extends Component {
 
     componentDidMount() {
-        const { dispatch, match: { params: audienceId } } = this.props;
-        dispatch(fetchAudience(audienceId.audienceId));
+        const { dispatch, audienceId } = this.props;
+        dispatch(fetchAudience(audienceId));
+        console.log(this.props);
     }
 
     render() {
-        const { isFetching } = this.props.status;
-        const { currentClass } = this.props.currentClassData;
+        // const { isFetching } = this.props.status;
+        // const { currentClass } = this.props.currentClassData;
 
+        var currentClass = null;
+        
         return <CurrentClass currentClass={currentClass} />
     }
 }

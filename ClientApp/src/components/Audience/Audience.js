@@ -4,6 +4,7 @@ import {CurrentClass} from '../CurrentClass/CurrentClass';
 import {StatusBar} from '../StatusBar/StatusBar';
 import {DailySchedule} from '../DailySchedule/DailySchedule';
 import {SwitchDay} from '../SwitchDay/SwitchDay';
+import CurrentClassContainer from "../../containers/CurrentClassContainer";
 
 export default class Audience extends Component {
 
@@ -14,7 +15,7 @@ export default class Audience extends Component {
 
             <Layout className="allPage">
                 <StatusBar/>
-                <CurrentClass/>
+                <CurrentClassContainer audienceId={1201}/>
                 <SwitchDay/>
                
             </Layout>
