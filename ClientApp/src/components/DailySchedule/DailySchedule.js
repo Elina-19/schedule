@@ -8,39 +8,11 @@ import {connect} from "react-redux";
 export class DailySchedule extends Component {
     static displayName = DailySchedule.name;
 
-    /*componentDidMount() {
-        const {dispatch, match:{params: audienceId}} = this.props;
-        dispatch(fetchAudience(audienceId));
-    }
-
-    state = {
-        classes: []
-    };
-
-    service = new Service();
-
-    constructor() {
-        super();
-        this.updateClass();
-    }
-
-    onClassLoaded = (classes) => {
-        this.setState({classes});
-    };
-
-    updateClass() {
-        const id = this.service._extractClass(window.location.href);
-        this.service
-            .getAllClasses(id)
-            .then(this.onClassLoaded);
-    }
-    */
-
     render() {
 
         const { classes } = this.props;
-        /*
-        const content = classes.map(
+        
+        /*const content = classes.map(
             (ourClass, index) =>
                 <tr key={index}>
                     <th>{index + 1}</th>
@@ -49,8 +21,8 @@ export class DailySchedule extends Component {
                     <th>{ourClass.name}</th>
                     <th>{ourClass.teacher}</th>
                 </tr>
-        )
-        */
+        )*/
+        
         return (
             <table className="tableR">
                 <thead>
@@ -63,12 +35,10 @@ export class DailySchedule extends Component {
                 </tr>
                 </thead>
                 <tbody>
-               
+                    {classes}
                 </tbody>
             </table>
         );
     }
 }
-const mapStateToProps = ({DailySchedule, status}) => {return {DailySchedule, status}};
 
-export default connect(mapStateToProps)(DailySchedule)

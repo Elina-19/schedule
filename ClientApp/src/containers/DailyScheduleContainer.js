@@ -12,7 +12,7 @@ class DailyScheduleContainer extends Component {
     }
 
     getDailySchedule = (dailyScheduleId) => {
-        const { fetchDailySchedule } = this.props;
+        const { fetchDailySchedule, dailyScheduleId } = this.props;
         fetchDailySchedule(dailyScheduleId);
     };
 
@@ -20,9 +20,14 @@ class DailyScheduleContainer extends Component {
         const { isFetching } = this.props.status;
         const { classes } = this.props;
 
-        return <DailySchedule classes={classes}
-            isFetching={isFetching}
-        />
+        if (!isFetching) {
+            if (classes != null)
+                return <DailySchedule currentClass={classes} />
+            else
+                return (<h2>Oops, page not found</h2>);
+        }
+        else
+            return (<h2>Hi</h2>);
     }
 }
 

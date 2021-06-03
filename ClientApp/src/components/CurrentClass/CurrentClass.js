@@ -17,7 +17,7 @@ export class CurrentClass extends Component {
                         {number}
                     </div>
                     <div  className="currentClassName">{name}</div>
-                    
+                   
                     <div  className="currentClassGroups">{groups}</div>
                     <div className="currentClassTeacher">{teacher}</div>
                 </div>

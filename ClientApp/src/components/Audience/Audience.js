@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Layout} from '../Layout/Layout';
-import {CurrentClass} from '../CurrentClass/CurrentClass';
 import {StatusBar} from '../StatusBar/StatusBar';
 import {DailySchedule} from '../DailySchedule/DailySchedule';
 import {SwitchDay} from '../SwitchDay/SwitchDay';
@@ -14,10 +13,10 @@ export default class Audience extends Component {
         return (
 
             <Layout className="allPage">
-                <StatusBar/>
-                <CurrentClassContainer audienceId={1201}/>
-                <SwitchDay/>
-               
+                <StatusBar />
+                <CurrentClassContainer audienceId={ 1201} />
+                <SwitchDay />
+                <DailySchedule dailyScheduleId={ 1201}/>
             </Layout>
         );
     }
