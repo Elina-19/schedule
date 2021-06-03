@@ -9,7 +9,7 @@ export default class Schedule {
             .then(audiences => {
                 return new Promise(resolve => {
                     setTimeout(() => {
-                        resolve(audiences.data.lessons.map(this._transformAllClass));
+                        resolve(audiences.data);
                     }, 1000)
                 });
             })
@@ -44,13 +44,7 @@ export default class Schedule {
         };
     }
 
-    _extractClass(href) {
-        try {
-            const idRegExp = /\/([0-9]*)\/$/;
-            return href.match(idRegExp)[1];
-        } catch (error) {
-            return 2;
-        }
 
-    }
+
+
 }

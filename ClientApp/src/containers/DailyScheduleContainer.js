@@ -8,14 +8,14 @@ import {DailySchedule} from "../components/DailySchedule/DailySchedule";
 class DailyScheduleContainer extends Component {
 
     componentDidMount() {
-        const { fetchDailySchedule, dailyScheduleId } = this.props.dailySchedule;
+        const { fetchDailySchedule, dailyScheduleId } = this.props;
         fetchDailySchedule(dailyScheduleId);
     }
     
     render() {
         const { isFetching } = this.props.status;
         const { classes } = this.props;
-        console.log(this.props);
+        
         if (!isFetching) {
             if (classes != null)
                 return <DailySchedule currentClass={classes} />

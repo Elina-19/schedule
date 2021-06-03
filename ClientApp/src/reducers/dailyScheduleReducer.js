@@ -5,10 +5,10 @@ const dailyScheduleState = {
 };
 
 function dailyScheduleReducer(state = dailyScheduleState, action) {
-
     switch (action.type) {
         case Actions.RECEIVE_DAILY_SCHEDULE:
-            return { ...state, classes: action.dailySchedule };
+            console.log(action.dailySchedule.lessons)
+            return { ...state, classes: action.dailySchedule.lessons };
         default:
             return state;
     }
