@@ -7,12 +7,8 @@ const dailyScheduleState = {
 function dailyScheduleReducer(state = dailyScheduleState, action) {
 
     switch (action.type) {
-        case Actions.INCREMENT_DAILY_SCHEDULE:
-            return {...state, classes: action.classes };
-
-        case Actions.DECREMENT_DAILY_SCHEDULE:
-            return {...state, classes: action.classes };
-
+        case Actions.RECEIVE_DAILY_SCHEDULE:
+            return { ...state, classes: action.dailySchedule };
         default:
             return state;
     }

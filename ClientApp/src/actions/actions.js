@@ -58,6 +58,7 @@ function receiveFloor(floor){
 }
 
 function receiveDailySchedule(dailySchedule){
+
     return {
         type: RECEIVE_DAILY_SCHEDULE,
         dailySchedule: dailySchedule
@@ -129,8 +130,7 @@ export function fetchAudience(audienceId) {
     return function (dispatch) {
 
         const audience = response(scheduleService.getClass(audienceId), dispatch);
-        // TODO - заменить на свойства аудитории
-
+        
         return audience.then(audience => {
 
             const mappedAudience = {
@@ -148,12 +148,14 @@ export function fetchAudience(audienceId) {
 
 export function fetchDailySchedule(dailyScheduleId) {
     return function (dispatch) {
-        console.log(dailyScheduleId)
         const dailySchedule = response(scheduleService.getAllClasses(dailyScheduleId), dispatch);
         // TODO - заменить на свойства аудитории
         return dailySchedule.then(dailySchedule => {
+
             dispatch(receiveDailySchedule(dailySchedule));//тоже готовые данные?
         });
+        
+
     }
 }
 
@@ -161,6 +163,7 @@ export function fetchDailySchedule(dailyScheduleId) {
 * Helper functions
 * */
 function response(promise, dispatch) {
+    
 
     dispatch(requestData());
 

@@ -13,7 +13,6 @@ class CurrentClassContainer extends Component {
     }
 
     render() {
-        console.log("Current class container", this.props);
         const { isFetching } = this.props.status;
         const { currentClass } = this.props.currentClass;
         
