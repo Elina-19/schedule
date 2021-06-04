@@ -1,56 +1,28 @@
-/*
 import React, {Component} from 'react';
-import '../DailySchedule/DailySchedule.css';
 import Service from '../../httpRequest/schedule';
-import {fetchFloor} from "../../actions/actions";
+import {fetchAudience} from '../../actions/actions'
 import {connect} from "react-redux";
 
-
 export class FloorSchedule extends Component {
-
-    componentDidMount() {
-        const {dispatch, match: {params: floorId}} = this.props;
-        dispatch(fetchFloor(floorId));
-
-        console.log("ComponentDidMount Result is ", this.props);
-    }
-
-    state = {
-        classes: []
-    };
-
-    service = new Service();
-
-    constructor() {
-        super();
-        this.updateClass();
-    }
-
-    onClassLoaded = (classes) => {
-        this.setState({classes});
-    };
-
-    updateClass() {
-        this.service
-            .getAllClasses()
-            .then(this.onClassLoaded);
-    }
-
+    static displayName = FloorSchedule.name;
 
     render() {
-        const {isFetching} = this.props.status;
-        const {classData} = this.props.ourClass;
         
-        const content = this.state.classes.map(
+        const { lessons } = this.props;
+        console.log(this.props);
+        const content = lessons.currentClass.floor.audiences.map(
             (ourClass, index) =>
                 <tr key={index}>
-                    <th>{index+1}</th>
-                    <th>{ourClass.time}</th>
-                    <th>{ourClass.groups}</th>
-                    <th>{ourClass.name}</th>
-                    <th>{ourClass.teacher}</th>
+                    <th>{index + 1}</th>
+                    <th>{ourClass.currentLesson.time}</th>
+                    <th>{ourClass.currentLesson.groups.map(
+                        (group) =>
+                            group + " " 
+                    )}</th>
+                    <th>{ourClass.currentLesson.discipline}</th>
+                    <th>{ourClass.currentLesson.teacher}</th>
                 </tr>
-        );
+        )
 
         return (
             <table className="tableR">
@@ -70,78 +42,3 @@ export class FloorSchedule extends Component {
         );
     }
 }
-const mapStateToProps = ({FloorSchedule, status}) => {return {FloorSchedule, status}};
-
-export default connect(mapStateToProps)(FloorSchedule)
-
-
-
-
-// this.state = {
-//     audiences: [
-//         {
-//             numberOfAudience: '№ аудитории',
-//             listOfClasses: [
-//                 {
-//                     nameOfDiscipline: 'Название предмета',
-//                     teacherName: 'Имя преподавателя',
-//                     groupNumber: 'Группа',
-//                     time: 'Время',
-//                 }
-//             ]
-//         },
-//         {
-//             numberOfAudience: '1301',
-//             listOfClasses: [
-//                 {
-//                     nameOfDiscipline: 'Алгем',
-//                     teacherName: 'Арсланов',
-//                     groupNumber: '11-001',
-//                     time: '8:30-10:00',
-//                 },
-//                 {
-//                     nameOfDiscipline: 'Мат анализ',
-//                     teacherName: 'Широкова',
-//                     groupNumber: '11-004',
-//                     time: '10:10-11:40',
-//                 },
-//             ]
-//         },
-//         {
-//             numberOfAudience: '1302',
-//             listOfClasses: [
-//                 {
-//                     nameOfDiscipline: 'Алгем',
-//                     teacherName: 'Тапкин',
-//                     groupNumber: '11-001',
-//                     time: '8:30-10:00',
-//                 },
-//                 {
-//                     nameOfDiscipline: 'Информатика',
-//                     teacherName: 'Ференец',
-//                     groupNumber: '11-906',
-//                     time: '10:10-11:40',
-//                 }
-//             ]
-//         },
-//         {
-//             numberOfAudience: '1303',
-//             listOfClasses: [
-//                 {
-//                     nameOfDiscipline: 'Русский язык',
-//                     teacherName: 'Гараева',
-//                     groupNumber: '11-003',
-//                     time: '8:30-10:00',
-//                 },
-//                 {
-//                     nameOfDiscipline: 'Дискретная математика',
-//                     teacherName: 'Зубков',
-//                     groupNumber: '11-002',
-//                     time: '10:10-11:40',
-//                 }
-//             ]
-//         }
-//     ]
-// };
-
-*/

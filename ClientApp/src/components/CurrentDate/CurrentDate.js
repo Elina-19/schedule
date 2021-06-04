@@ -81,13 +81,13 @@ export default class CurrentDate {
 
     getCurrentDayOfWeek() {
         var daysOfWeek = [
+            'вс',
             'пн',
             'вт',
             'ср',
             'чт',
             'пт',
-            'сб',
-            'вс'
+            'сб'
         ];
         return daysOfWeek[this.state.dayOfWeekIndex];
     }

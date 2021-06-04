@@ -14,6 +14,16 @@ export default class Schedule {
                 });
             })
     }
-
+    
+    async getFloor(id) {
+        return this.request.getRequest(`${this._apiBase}/floor/${id}/`)
+            .then(floor => {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve(floor.data);
+                    }, 1000)
+                });
+            })
+    }
   
 }

@@ -9,12 +9,13 @@ import {SwitchDay} from '../SwitchDay/SwitchDay'
     //TODO сделать еще отдельные css для классов в FloorComponents и таблицу как вторую компоненту
 
     render() {
+
         return (
 
             <Layout className="allPage">
                 <StatusBar/>
                 <SwitchDay/>
-                <FloorSchedule/>
+                <FloorSchedule lessons={this.props}/>
             </Layout>
         );
     }

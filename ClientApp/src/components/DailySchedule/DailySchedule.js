@@ -10,18 +10,21 @@ export class DailySchedule extends Component {
     render() {
         console.log(this.props);
         const { lessons } = this.props;
-        
+
         const content = lessons.map(
             (ourClass, index) =>
                 <tr key={index}>
                     <th>{index + 1}</th>
                     <th>{ourClass.time}</th>
-                    <th>{ourClass.groups}</th>
+                    <th>{ourClass.groups.map(
+                        (group) =>
+                            group + " "
+                    )}</th>
                     <th>{ourClass.discipline}</th>
                     <th>{ourClass.teacher}</th>
                 </tr>
         )
-        
+
         return (
             <table className="tableR">
                 <thead>
@@ -34,10 +37,9 @@ export class DailySchedule extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                    {content}
+                {content}
                 </tbody>
             </table>
         );
     }
 }
-

@@ -2,33 +2,34 @@
 import { connect } from "react-redux";
 import './load.css';
 
-import { fetchAudience } from "../actions/actions";
+import { fetchFloor } from "../actions/actions";
 import {bindActionCreators} from "redux";
-import Audience from "../components/Audience/Audience";
+import Floor from "../components/Floor/Floor";
 
-class AudienceContainer extends Component {
+class FloorContainer extends Component {
 
     componentDidMount() {
-        const { fetchAudience, audienceId } = this.props;
-        fetchAudience(this.transformAudience());
+        const { fetchFloor, floorId } = this.props;
+        fetchFloor(this.transformFloor());
     }
 
-    transformAudience(){
+    transformFloor(){
         try {
             const idRegExp = /\/([0-9]*)\/$/;
             return window.location.href.match(idRegExp)[1];
         } catch (error) {
-            return 1201;
+            return 1301;
         }
     }
 
     render() {
         const { isFetching } = this.props.status;
-        const { currentClass } = this.props;
+        const { floorSchedule } = this.props;
+        console.log(this.props)
 
         if (!isFetching){
-            if (currentClass.currentClass != null)
-                return <Audience currentClass={currentClass.currentClass} />
+            if (floorSchedule.audiences != null)
+                return <Floor currentClass={floorSchedule.audiences} />
             else
                 return (<h2>Oops, page not found</h2>);
         }
@@ -37,18 +38,18 @@ class AudienceContainer extends Component {
     }
 }
 
-const mapStateToProps = ({ currentClass, status }) => {
+const mapStateToProps = ({ floorSchedule, status }) => {
 
     return {
-        currentClass,
+        floorSchedule,
         status
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        fetchAudience
+        fetchFloor
     }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AudienceContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(FloorContainer)

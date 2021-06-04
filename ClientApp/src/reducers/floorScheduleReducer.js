@@ -1,21 +1,21 @@
 import * as Actions from '../actions/actions';
 
-const floorScheduleState = {
-    audiences: [],
+const floorState = {
+    audiences: null
 };
 
-function floorScheduleReducer(state = floorScheduleState, action) {
+function floorData(state = floorState, action) {
 
     switch (action.type) {
-        case Actions.INCREMENT_FLOOR_SCHEDULE:
-            return {...state, audiences: action.audiences};
-
-        case Actions.DECREMENT_FLOOR_SCHEDULE:
-            return {...state, audiences: action.audiences};
-
+        case Actions.RECEIVE_FLOOR:
+            return {
+                
+                ...state,
+                audiences: action
+            };
         default:
             return state;
     }
 }
 
-export default floorScheduleReducer;
+export default floorData;

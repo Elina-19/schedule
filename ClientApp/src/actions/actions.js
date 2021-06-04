@@ -50,12 +50,14 @@ function receiveAudience(audience) {
     }
 }
 
-function receiveFloor(floor){
+function receiveFloor(floor) {
     return {
         type: RECEIVE_FLOOR,
         floor: floor
     }
 }
+
+
 
 function receiveDailySchedule(dailySchedule){
 
@@ -107,23 +109,16 @@ function decrementSwitchDay(currentDate) {
     }
 }
 
-
-/*export function fetchFloor(floorId) {
+export function fetchFloor(floorId) {
     return function (dispatch) {
-        // TODO - добавить в сервис метод для запроса инфы по этажу
-        const floor = response(scheduleService.getClass(floorId), dispatch);
+
+        const floor = response(scheduleService.getFloor(floorId), dispatch);
 
         return floor.then(floor => {
-            const mappedFloor = {
-                time: floor.data.floor.time,
-                groups: floor.data.floor.groups,
-                name: floor.data.floor.name,
-                teacher: floor.data.floor.teacher
-            };
-            dispatch(receiveFloor(mappedFloor))
+            dispatch(receiveFloor(floor));
         });
     }
-}*/
+}
 
 
 export function fetchAudience(audienceId) {
@@ -136,19 +131,6 @@ export function fetchAudience(audienceId) {
         });
     }
 }
-
-/*export function fetchDailySchedule(dailyScheduleId) {
-    return function (dispatch) {
-        const dailySchedule = response(scheduleService.getAllClasses(dailyScheduleId), dispatch);
-        // TODO - заменить на свойства аудитории
-        return dailySchedule.then(dailySchedule => {
-
-            dispatch(receiveDailySchedule(dailySchedule));//тоже готовые данные?
-        });
-        
-
-    }
-}*/
 
 /*
 * Helper functions

@@ -8,10 +8,10 @@ const NotFoundPage = () => {
         <div>
             <ul>
                 <li>
-                    <Link to="/audience/2/"><h3>Расписание на аудиторию</h3></Link>
+                    <Link to="/audience/1301/"><h3>Расписание на аудиторию</h3></Link>
                 </li>
                 <li>
-                    <Link to="/floor/:floorId"><h3>Расписание на этаж</h3></Link>
+                    <Link to="/floor/13"><h3>Расписание на этаж</h3></Link>
                 </li>
             </ul>
             <div>
