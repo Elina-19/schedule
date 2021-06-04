@@ -33,7 +33,9 @@ class AudienceContainer extends Component {
                 return (<h2>Oops, page not found</h2>);
         }
         else
-            return <div className="load">Loading</div>;
+            return <div className="load">Loading
+        
+                    </div>;
     }
 }
 

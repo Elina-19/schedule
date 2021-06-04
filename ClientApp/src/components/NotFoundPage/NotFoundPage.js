@@ -32,11 +32,6 @@ const NotFoundPage = () => {
         </div>
     );
 }
-// function Floor() {
-//     return <h2>Расписание на этаж</h2>;
-// }
-//
-// function Class() {
-//     return <h2>Расписание на аудиторию</h2>;
-// }
+
+
 export default NotFoundPage;
