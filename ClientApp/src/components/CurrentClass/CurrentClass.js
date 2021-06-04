@@ -4,14 +4,13 @@ import './CurrentClass.css';
 export class CurrentClass extends Component {
 
     render() {
-        console.log(this.props);
         const { audienceNumber, discipline, groups, teacher, time } = this.props.currentLesson;
         return (
             <div className="currentClassDiscipline">
 
                 <div className="currentClassInfo">
                     <div className="currentClassNumber">
-                        {audienceNumber}
+                        {this.props.audienceNumber}
                     </div>
                     <div  className="currentClassName">{discipline}</div>
 
