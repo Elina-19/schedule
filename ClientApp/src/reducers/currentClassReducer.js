@@ -1,7 +1,7 @@
 ﻿import * as Actions from '../actions/actions';
 
 const currentClassState = {
-    currentClass: {}
+    currentClass: null
 };
 
 function currentClassData(state = currentClassState, action) {

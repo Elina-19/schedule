@@ -5,18 +5,16 @@ import './CurrentClass.css';
 export class CurrentClass extends Component {
     
     render() {
-
-        const { currentClass } = this.props;
-       
-        const { number, name, groups, teacher, time } = currentClass;
+        console.log(this.props);
+        const { audienceNumber, discipline, groups, teacher, time } = this.props.currentLesson;
         return (
             <div className="currentClassDiscipline">
 
                 <div className="currentClassInfo">
                     <div className="currentClassNumber">
-                        {number}
+                        {audienceNumber}
                     </div>
-                    <div  className="currentClassName">{name}</div>
+                    <div  className="currentClassName">{discipline}</div>
                    
                     <div  className="currentClassGroups">{groups}</div>
                     <div className="currentClassTeacher">{teacher}</div>

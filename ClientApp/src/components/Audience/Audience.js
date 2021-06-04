@@ -6,6 +6,7 @@ import {SwitchDay} from '../SwitchDay/SwitchDay';
 import CurrentClassContainer from "../../containers/CurrentClassContainer";
 
 import DailyScheduleContainer from "../../containers/DailyScheduleContainer";
+import {CurrentClass} from "../CurrentClass/CurrentClass";
 
 export default class Audience extends Component {
 
@@ -13,13 +14,14 @@ export default class Audience extends Component {
     
     
     render() {
+        const {currentLesson, lessons} = this.props.currentClass;
+        console.log(this.props);
         return (
-
             <Layout className="allPage">
                 <StatusBar />
-                <CurrentClassContainer audienceId={ this.transformClass()} />
+                <CurrentClass currentLesson={currentLesson} audienceNumber={this.props.currentClass.number}/>
                 <SwitchDay />
-                <DailyScheduleContainer dailyScheduleId={ this.transformClass()}/>
+                <DailySchedule lessons={lessons}/>
             </Layout>
         );
     }

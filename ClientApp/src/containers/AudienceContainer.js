@@ -17,17 +17,17 @@ class AudienceContainer extends Component {
             const idRegExp = /\/([0-9]*)\/$/;
             return window.location.href.match(idRegExp)[1];
         } catch (error) {
-            return 1301;
+            return 1201;
         }
     }
     
     render() {
         const { isFetching } = this.props.status;
-        const { audience } = this.props;
-        
+        const { currentClass } = this.props;
+
         if (!isFetching){
-            if (audience != null)
-                return <Audience currentClass={audience} />
+            if (currentClass.currentClass != null)
+                return <Audience currentClass={currentClass.currentClass} />
             else
                 return (<h2>Oops, page not found</h2>);
         }
@@ -36,10 +36,10 @@ class AudienceContainer extends Component {
     }
 }
 
-const mapStateToProps = ({ audience, status }) => {
+const mapStateToProps = ({ currentClass, status }) => {
 
     return {
-        audience,
+        currentClass,
         status
     };
 };
